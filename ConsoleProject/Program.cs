@@ -1,2 +1,2 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World! This is now Gael Laptop");
+Console.WriteLine("Hello, World! This is now Pierre Laptop");
