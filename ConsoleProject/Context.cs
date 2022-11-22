@@ -21,12 +21,12 @@ namespace ConsoleProject
             if (language == "FR" || language == "fr")
             {
                 SetStrategy(new FrenchStrategy());
-                LaunchProgram();
+                //LaunchProgram();
             }
             else if (language == "EN" || language == "en")
             {
                 SetStrategy(new EnglishStrategy());
-                LaunchProgram();
+                //LaunchProgram();
             }
             else
             {

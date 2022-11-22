@@ -12,10 +12,11 @@ namespace SaveManager
         static void Main(string[] args)
         {
             var context = new Context();
-            
+
+            context.selectLanguage();
             while (true)
             {
-                context.selectLanguage();
+                context.LaunchProgram();
             }
         }
     }
