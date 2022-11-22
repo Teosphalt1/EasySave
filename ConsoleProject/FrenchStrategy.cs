@@ -12,7 +12,7 @@ namespace ConsoleProject
 
         public void BeginAlgorithmTXT()
         {
-            Console.WriteLine("1-Executer un travail de sauvegarde\n2-Ajouter une sauvegarde");
+            Console.WriteLine("1-Executer un travail de sauvegarde\n2-Ajouter une sauvegarde\n3-consulter les travaux de sauvegardes");
         }
 
         public void ExecuteASaveTXT()

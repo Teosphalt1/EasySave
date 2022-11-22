@@ -21,21 +21,21 @@ namespace ConsoleProject
             if (language == "FR" || language == "fr")
             {
                 SetStrategy(new FrenchStrategy());
-                //LaunchProgram();
             }
             else if (language == "EN" || language == "en")
             {
                 SetStrategy(new EnglishStrategy());
-                //LaunchProgram();
             }
             else
             {
                 Console.WriteLine("Erreur mauvaise saisie de langage\nError bad language selection");
+                selectLanguage();
             }
         }
 
         public void LaunchProgram()
         {
+            DBjson dbjson = new DBjson();
             this._strategyLanguage.BeginAlgorithmTXT();
             string choice = Console.ReadLine();
             if(choice == "1")
@@ -80,7 +80,12 @@ namespace ConsoleProject
             }
             else if (choice == "2")
             {
+                dbjson.addNewSaveWork();
                 this._strategyLanguage.AddASaveTXT();
+            }
+            else if (choice == "3")
+            {
+                dbjson.displaySaveWorks();
             }
             else
             {

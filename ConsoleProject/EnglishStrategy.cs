@@ -11,7 +11,7 @@ namespace ConsoleProject
         string saveName;
         public void BeginAlgorithmTXT()
         {
-            Console.WriteLine("1-Execute a save work\n2-Add a save work");
+            Console.WriteLine("1-Execute a save work\n2-Add a save work\n3-Show existent save works");
         }
 
         public void ExecuteASaveTXT()
