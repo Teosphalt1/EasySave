@@ -1,4 +1,5 @@
 ﻿using ConsoleProject;
+using ConsoleProject.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,19 @@ namespace SaveManager
     {
         static void Main(string[] args)
         {
-            var context = new Context();
+        //    var context = new Context();
 
-            context.selectLanguage();
+        //    context.selectLanguage();
+        //    while (true)
+        //    {
+        //        context.LaunchProgram();
+        //    }
+
             while (true)
             {
-                context.LaunchProgram();
+                SelectLanguage selectLanguage = new SelectLanguage();
             }
+            
         }
     }
 }
