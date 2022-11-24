@@ -33,23 +33,55 @@ namespace ConsoleProject
 
             string justText = File.ReadAllText(fileName);
             List<SaveWork> myPosts = JsonConvert.DeserializeObject<List<SaveWork>>(justText);
-            SaveWork sw = new SaveWork();
-            int count = myPosts.Count;
-            sw.id = count + 1;
-            Console.WriteLine("nom");
-            sw.Name = Console.ReadLine();
-            Console.WriteLine("source");
-            sw.FileSource = Console.ReadLine();
-            Console.WriteLine("destination");
-            sw.destPath = Console.ReadLine();
-            sw.time = DateTime.Now.ToString();
+            int State = 0;
+            if(myPosts.Count < 5)
+                {
+                SaveWork sw = new SaveWork();
+                int count = myPosts.Count;
+                sw.id = count + 1;
 
-            myPosts.Add(sw);
+                Console.WriteLine("Nom / Name");
+                sw.Name = Console.ReadLine();
 
-            string json = System.Text.Json.JsonSerializer.Serialize(myPosts, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(fileName, json);
+                Console.WriteLine("Source");
+                sw.FileSource = Console.ReadLine();
 
-            return (sw);
+                Console.WriteLine("Destination");
+                sw.destPath = Console.ReadLine();
+
+                Console.WriteLine("Type: 1- Complete\n2-Differential/Differentielle");
+                string type = Console.ReadLine();
+                if (type == "1")
+                {
+                    sw.type = "complete";
+                }
+                else if (type == "2")
+                {
+                    sw.type = "differential";
+                }
+                else
+                {
+                    Console.WriteLine("ERROR");
+                }
+
+                sw.time = DateTime.Now.ToString();
+
+                if (sw.type != null)
+                {
+                    myPosts.Add(sw);
+                    string json = System.Text.Json.JsonSerializer.Serialize(myPosts, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(fileName, json);
+                    return (sw);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

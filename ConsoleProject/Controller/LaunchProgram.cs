@@ -33,8 +33,15 @@ namespace ConsoleProject
             }
             else if (choice == "2")
             {
-                dbjson.addNewSaveWork();
-                _context._strategyLanguage.AddASaveTXT();
+                //dbjson.addNewSaveWork();
+                if(dbjson.addNewSaveWork() == null)
+                {
+                    _context._strategyLanguage.ErrorBadChoiceTXT();
+                }
+                {
+                    _context._strategyLanguage.AddASaveTXT();
+                }
+                
             }
             else if (choice == "3")
             {
