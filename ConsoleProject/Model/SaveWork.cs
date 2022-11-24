@@ -12,6 +12,7 @@ namespace ConsoleProject
         public string Name { get; set; }
         public string FileSource { get; set; }
         public string destPath { get; set; }
+        public string type { get; set; }
         public string time { get; set; }
     }
 }

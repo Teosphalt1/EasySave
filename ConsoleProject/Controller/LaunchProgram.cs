@@ -19,38 +19,16 @@ namespace ConsoleProject
                 string choiceNumberOfSave = Console.ReadLine();
                 if (choiceNumberOfSave == "1")
                 {
+                    _context.SetStrategySaveType(new AllTheSavesStrategy());
+                    _context._strategySaveType.ExecuteSave();
                     _context._strategyLanguage.ExecuteOnAllTheSavesTXT();
-                    string choiceType = Console.ReadLine();
-
-                    if (choiceType == "1")
-                    {
-                        _context._strategyLanguage.AllSaveCompleteTXT();
-                    }
-                    else if (choiceType == "2")
-                    {
-                        _context._strategyLanguage.AllSaveDifferentialTXT();
-                    }
-                    else
-                    {
-                        _context._strategyLanguage.ErrorBadChoiceTXT();
-                    }
                 }
                 if (choiceNumberOfSave == "2")
                 {
+                    _context._strategyLanguage.SaveNameChoiceTXT();
+                    _context.SetStrategySaveType(new SpecificSaveStrategy());
+                    _context._strategySaveType.ExecuteSave();
                     _context._strategyLanguage.ExecuteOnASpecificSaveTXT();
-                    string choiceType = Console.ReadLine();
-                    if (choiceType == "1")
-                    {
-                        _context._strategyLanguage.SpecificSaveCompleteTXT();
-                    }
-                    else if (choiceType == "2")
-                    {
-                        _context._strategyLanguage.SpecificSaveDifferentialTXT();
-                    }
-                    else
-                    {
-                        _context._strategyLanguage.ErrorBadChoiceTXT();
-                    }
                 }
             }
             else if (choice == "2")

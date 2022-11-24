@@ -25,33 +25,17 @@ namespace ConsoleProject
 
         public void ExecuteOnAllTheSavesTXT()
         {
-            Console.WriteLine("1-Execute a complete save\n2-Execute a differential save");
+            Console.WriteLine("You have executed a save on all the save works");
+        }
+
+        public void SaveNameChoiceTXT()
+        {
+            Console.WriteLine("Enter the id of the save work to execute");
         }
 
         public void ExecuteOnASpecificSaveTXT()
         {
-            Console.WriteLine("Give the exact name of the save");
-            saveName = Console.ReadLine();
-            Console.WriteLine("1-Execute a complete save\n2-Execute a differential save");
-        }
-
-        public void AllSaveCompleteTXT()
-        {
-            Console.WriteLine("You have done a complete save of every save work");
-        }
-        public void AllSaveDifferentialTXT()
-        {
-            Console.WriteLine("You have done a differential save of every save work");
-        }
-
-        public void SpecificSaveCompleteTXT()
-        {
-            Console.WriteLine("You have done a complete save of the save work " + saveName);
-        }
-
-        public void SpecificSaveDifferentialTXT()
-        {
-            Console.WriteLine("You have done a differential save of the save work " + saveName);
+            Console.WriteLine("You have executed a save on the save work");
         }
 
         public void ErrorBadChoiceTXT()

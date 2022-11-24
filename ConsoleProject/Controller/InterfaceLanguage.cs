@@ -13,10 +13,7 @@ namespace ConsoleProject
         void AddASaveTXT();
         void ExecuteOnAllTheSavesTXT();
         void ExecuteOnASpecificSaveTXT();
-        void AllSaveCompleteTXT();
-        void AllSaveDifferentialTXT();
-        void SpecificSaveCompleteTXT();
-        void SpecificSaveDifferentialTXT();
+        void SaveNameChoiceTXT();
         void ErrorBadChoiceTXT();
     }
 }
