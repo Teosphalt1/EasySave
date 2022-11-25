@@ -31,7 +31,7 @@ namespace ConsoleProject
         }
         public void SaveNameChoiceTXT()
         {
-            Console.WriteLine("Entrez l'id du travail de sauvegarde à effecteuer");
+            Console.WriteLine("Entrez l'id du travail de sauvegarde à effectuer");
         }
         public void ExecuteOnASpecificSaveTXT()
         {
