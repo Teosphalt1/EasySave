@@ -10,34 +10,34 @@ Projet Programmation Système
 │   README.md    
 │
 └───ConsoleProject
-│   │	Program.cs
+│   │   Program.cs
 │   │
 │   └───Controller
-│   │   │	InterfaceLanguage.cs
-│   │   │	InterfaceSaveType.cs
-│   │   │	LaunchProgram.cs
-│	│	│	SelectLanguage.cs
-│	│	│
-│	│	Model
-│   │   │	Context.cs
-│   │   │	DBjson.cs
-│   │   │	Logs.cs
-│	│	│	SaveWork.cs
-│	│	│	States.cs
-│	│	│	WriteLogs.cs
-│	│	│	WriteStates.cs
-│	│	│
-│	│	└───Strategies
-│	│	│	│	AllTheSavesStrategy.cs
-│	│	│	│	EnglishStrategy.cs
-│	│	│	│	LogsExecuteSaveOnCreation.cs
-│	│	│	│	FrenchStrategy.cs
-│	│	│	│	SpecificSaveStrategy.cs
-│	│	│
-│	│	View
-│   │   │  View.cs
-│	│	│
-│   │	└───   
+│   │   │   InterfaceLanguage.cs
+│   │   │   InterfaceSaveType.cs
+│   │   │   LaunchProgram.cs
+│   │   │   SelectLanguage.cs
+│   │   │
+│   │	Model
+│   │   │   Context.cs
+│   │   │   DBjson.cs
+│   │   │   Logs.cs
+│   │   │   SaveWork.cs
+│   │   │   States.cs
+│   │   │   WriteLogs.cs
+│   │   │   WriteStates.cs
+│   │   │
+│   │   └───Strategies
+│   │   │   │   AllTheSavesStrategy.cs
+│   │   │   │   EnglishStrategy.cs
+│   │   │   │   LogsExecuteSaveOnCreation.cs
+│   │   │   │   FrenchStrategy.cs
+│   │   │   │   SpecificSaveStrategy.cs
+│   │   │
+│   │   View
+│   │   │   View.cs
+│   │   │
+│   │   └───   
 
 ```
 # Emplacement par défaut logiciel
