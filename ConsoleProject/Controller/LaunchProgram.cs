@@ -8,6 +8,13 @@ namespace ConsoleProject
 {
     class LaunchProgram
     {
+        /// <summary>
+        /// Controller of the Program
+        /// Will assure the communication between the view and the models
+        /// Is responsible to call the right method when it's necessary
+        /// Execute the verification and chose which case apply
+        /// </summary>
+        /// <param name="_context"></param>
         public LaunchProgram(Context _context)
         {
             int i = 0;

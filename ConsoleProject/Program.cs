@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace SaveManager
 {
+    /// <summary>
+    /// Begining point of the program
+    /// Call the fist method to use, in this case the selection of the language
+    /// </summary>
     class Program
     {
         /// <summary>

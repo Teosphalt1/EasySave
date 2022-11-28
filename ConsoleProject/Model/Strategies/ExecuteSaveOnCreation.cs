@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// Inheritance class  of the interface IStrategySaveType to use ExecuteSave()
+    /// </summary>
     class ExecuteSaveOnCreation : IStrategySaveType
     {
+        /// <summary>
+        /// Will only be executed when a save work is created
+        /// Is obligatorly complete to have a first save functional
+        /// </summary>
         public void ExecuteSave()
         {
             string fileName = @"c:\bdd.json";

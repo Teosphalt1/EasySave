@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// Inheritance class  of the interface IStrategySaveType to use ExecuteSave()
+    /// </summary>
     class SpecificSaveStrategy : IStrategySaveType
     {
+        /// <summary>
+        /// Will execute the specific save work given by the user which is registered on bdd.json
+        /// Will gather the informations to fill logs.json
+        /// Will gather the informations to update in real time the file state.json
+        /// </summary>
         public void ExecuteSave()
         {
             string fileName = @"c:\bdd.json";
