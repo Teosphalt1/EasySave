@@ -37,7 +37,7 @@ Projet Programmation Système
 │   │   View
 │   │   │   View.cs
 │   │   │
-│   │   └───   
+└────────────────────────────────────────────     
 
 ```
 # Emplacement par défaut logiciel
