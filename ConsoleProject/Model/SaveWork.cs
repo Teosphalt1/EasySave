@@ -8,6 +8,9 @@ namespace ConsoleProject
 {
     public class SaveWork
     {
+        /// <summary>
+        /// Parent class that defines the different save work function
+        /// </summary>
         public int id { get; set; }
         public string Name { get; set; }
         public string FileSource { get; set; }

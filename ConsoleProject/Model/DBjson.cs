@@ -12,6 +12,7 @@ namespace ConsoleProject
     {
         public SaveWork displaySaveWorks()
         {
+            // This method permit to display all the save work and their parameters
             string fileName = @"c:\bdd.json";
 
             if (System.IO.File.Exists(fileName))
@@ -29,6 +30,8 @@ namespace ConsoleProject
 
         public SaveWork addNewSaveWork()
         {
+            // This method permits to add a save work by asking 
+            // the differents parameters
             string fileName = @"c:\bdd.json";
 
             string justText = File.ReadAllText(fileName);

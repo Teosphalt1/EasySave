@@ -11,22 +11,13 @@ namespace ConsoleProject
 {
     public class WriteLogs
     {
+        /// <summary>
+        /// This permits to write the logs on json
+        /// </summary>
         public static void WriteLogsOnJson(string Name, string newPath, string destPath, TimeSpan ts)
         {
-            //Console.Write("\n" + Name);
-            //Console.WriteLine("\nFileSource = " + newPath);
-            //Console.WriteLine("destPath = " + destPath + @"\" + Path.GetFileName(newPath));
-            //Console.WriteLine("time = " + DateTime.Now.ToString());
-            //long length = new System.IO.FileInfo(newPath).Length;
-            //Console.WriteLine("FileSize = " + length);
 
-
-            // Format and display the TimeSpan value.
-            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            //    ts.Hours, ts.Minutes, ts.Seconds,
-            //    ts.Milliseconds / 10);
             string elapsedTime = ts.ToString();
-            //Console.WriteLine("FileTransferTime = " + elapsedTime);
 
             string fileName = @"c:\logs.json";
 
