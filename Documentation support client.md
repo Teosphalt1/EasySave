@@ -47,6 +47,7 @@ Projet Programmation Système
 Fichier de configuration de sauvegarde 'bdd.json' : C:\\bdd.json  
 Fichier logs 'logs.json' : C:\\logs.json  
 Fichier statut 'states.json' :C:\\states.json  
+Les fichiers JSON sont placés dans un premier temps à cet endroit afin de faciliter leur accès pour la première version de l'application
 ________________________________________________________________
 
 # [EN] CLIENT SUPPORT DOCUMENTATION
@@ -98,3 +99,4 @@ Projet Programmation Système
 Backup configuration file 'bdd.json' : C:\\bdd.json  
 Logs file 'logs.json' : C:\\logs.json  
 State file 'states.json' :C:\\states.json  
+JSON files are first placed here for an easy acces on this first version of the application
