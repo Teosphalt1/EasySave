@@ -1,4 +1,4 @@
-﻿# [FR] MANUEL SUPPORT CLIENT 
+﻿# [FR] MANUEL SUPPORT CLIENT
 
 ## Configuration minimale requise
 - Processeur : Processeur de 1 GHz ou plus rapide
@@ -7,7 +7,7 @@
 - Carte graphique :	DirectX 9 ou version ultérieure avec pilote WDDM 1.0
 - Ecran : 800x600 
 
-## Emplacement par défaut logiciel
+## Arborescence du projet
 ```
 Projet Programmation Système
 │   README.md    
@@ -58,7 +58,7 @@ ________________________________________________________________
 - Graphics card :	DirectX 9 or later with WDDM 1.0 driver
 - Display: 	800x600 
 
-## Default software location
+## Project spanning tree
 ```
 Projet Programmation Système
 │   README.md    
