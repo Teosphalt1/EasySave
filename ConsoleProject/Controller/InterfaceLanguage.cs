@@ -15,5 +15,7 @@ namespace ConsoleProject
         void ExecuteOnASpecificSaveTXT();
         void SaveNameChoiceTXT();
         void ErrorBadChoiceTXT();
+        void ErrorTooMuchSaveTXT();
+        void ErrorWrongIdTXT();
     }
 }

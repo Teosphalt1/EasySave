@@ -27,7 +27,7 @@ namespace ConsoleProject
 
         public void ExecuteOnAllTheSavesTXT()
         {
-            Console.WriteLine("Vous avez effectué une sauvegarde de tous les travaux");
+            Console.WriteLine("Sauvegarde effectuée sur les travaux");
         }
         public void SaveNameChoiceTXT()
         {
@@ -40,6 +40,14 @@ namespace ConsoleProject
         public void ErrorBadChoiceTXT()
         {
             Console.WriteLine("Erreur, choix non reconnu");
+        }
+        public void ErrorTooMuchSaveTXT()
+        {
+            Console.WriteLine("Erreur, 5 sauvegardes déjà existantes");
+        }
+        public void ErrorWrongIdTXT()
+        {
+            Console.WriteLine("Erreur, mauvais ID sélectionné veuillez ressayer");   
         }
     }
 }

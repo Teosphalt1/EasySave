@@ -25,7 +25,7 @@ namespace ConsoleProject
 
         public void ExecuteOnAllTheSavesTXT()
         {
-            Console.WriteLine("You have executed a save on all the save works");
+            Console.WriteLine("Save done on all works");
         }
 
         public void SaveNameChoiceTXT()
@@ -41,6 +41,14 @@ namespace ConsoleProject
         public void ErrorBadChoiceTXT()
         {
             Console.WriteLine("Error not recognized choice");
+        }
+        public void ErrorTooMuchSaveTXT()
+        {
+            Console.WriteLine("Error, 5 save already exist");
+        }
+        public void ErrorWrongIdTXT()
+        {
+            Console.WriteLine("Error, wrong ID selected please try again");
         }
     }
 }
