@@ -44,9 +44,9 @@ Projet Programmation Système
 
 ```
 ## Emplacement des fichiers de configuration
-Fichier de configuration de sauvegarde 'bdd.json' : C:\\bdd.json
-Fichier logs 'logs.json' : C:\\logs.json
-Fichier statut 'states.json' :C:\\states.json
+Fichier de configuration de sauvegarde 'bdd.json' : C:\\bdd.json  
+Fichier logs 'logs.json' : C:\\logs.json  
+Fichier statut 'states.json' :C:\\states.json  
 ________________________________________________________________
 
 # [EN] CLIENT SUPPORT DOCUMENTATION
@@ -95,6 +95,6 @@ Projet Programmation Système
 
 ```
 ## Configuration files location
-Backup configuration file 'bdd.json' : C:\\bdd.json
-Logs file 'logs.json' : C:\\logs.json
-State file 'states.json' :C:\\states.json
+Backup configuration file 'bdd.json' : C:\\bdd.json  
+Logs file 'logs.json' : C:\\logs.json  
+State file 'states.json' :C:\\states.json  
