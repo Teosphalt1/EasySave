@@ -10,7 +10,7 @@
 ## Arborescence du projet
 ```
 Projet Programmation Système
-│   README.md    
+│   Documentation support client.md    
 │
 └───ConsoleProject
 │   │   Program.cs
@@ -61,7 +61,7 @@ ________________________________________________________________
 ## Project spanning tree
 ```
 Projet Programmation Système
-│   README.md    
+│   Documentation support client.md    
 │
 └───ConsoleProject
 │   │   Program.cs
