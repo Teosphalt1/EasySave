@@ -13,9 +13,10 @@ namespace ConsoleProject
         public string destPath { get; set; }
         public int totalFiles { get; set; }
         public string time { get; set; }
-        public int totalSize { get; set; }
-        public int sizeLeft { get; set; }
+        public double totalSize { get; set; }
+        public double sizeLeft { get; set; }
         public int filesLeft { get; set; }
         public string state { get; set; }
+        public double progressPercentage { get; set; }
     }
 }

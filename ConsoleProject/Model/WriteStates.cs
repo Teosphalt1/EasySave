@@ -23,11 +23,12 @@ namespace ConsoleProject
                 states.FileSource = newPath;
                 states.destPath = destPath;
                 states.totalFiles = totalFiles;
-                states.totalSize = (int)totalSize;
+                states.totalSize = totalSize;
                 states.filesLeft = filesLeft;
-                states.sizeLeft = (int)dirSize;
+                states.sizeLeft = dirSize;
                 states.time = DateTime.Now.ToString();
                 states.state = state;
+                states.progressPercentage = 100-((states.sizeLeft / states.totalSize) * 100);
                 myPosts.Add(states);
                 
                 string json = System.Text.Json.JsonSerializer.Serialize(myPosts, new JsonSerializerOptions { WriteIndented = true });
