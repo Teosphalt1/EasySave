@@ -8,6 +8,9 @@ namespace ConsoleProject
 {
     class View
     {
+        /// <summary>
+        /// Asks the user for his language preference
+        /// </summary>
         private string _language;
 
         public string Language { get { return _language; } set { _language = value; } }
