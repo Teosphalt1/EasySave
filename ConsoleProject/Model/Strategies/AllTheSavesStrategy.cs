@@ -8,8 +8,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// Inheritance class  of the interface IStrategySaveType to use ExecuteSave()
+    /// </summary>
     class AllTheSavesStrategy : IStrategySaveType
     {
+        /// <summary>
+        /// Will execute all the different save works registered on bdd.json
+        /// will gather the informations to fill logs.json
+        /// will gather the informations to update in real time the file state.json
+        /// </summary>
         public void ExecuteSave()
         {
             string fileName = @"c:\bdd.json";

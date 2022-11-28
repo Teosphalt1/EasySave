@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleProject.Controller
-{
+{   /// <summary>
+    /// Call the View to make the user chose the language he want to use.
+    /// According to the input chose the strategy of the language to adopt
+    /// </summary>
     class SelectLanguage
     {
         private View _view;

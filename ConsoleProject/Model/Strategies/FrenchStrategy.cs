@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// Contain the dictionary for the french version off the software that will be applied if the user use the french strategy
+    /// </summary>
     class FrenchStrategy : IStrategyLanguage
     {
         string saveName;

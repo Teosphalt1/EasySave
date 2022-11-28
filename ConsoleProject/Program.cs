@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace SaveManager
 {
+    /// <summary>
+    /// Begining point of the program
+    /// Call the fist method to use, in this case the selection of the language
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-        //    var context = new Context();
-
-        //    context.selectLanguage();
-        //    while (true)
-        //    {
-        //        context.LaunchProgram();
-        //    }
-
             while (true)
             {
                 SelectLanguage selectLanguage = new SelectLanguage();

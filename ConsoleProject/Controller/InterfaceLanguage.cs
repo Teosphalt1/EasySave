@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// Define all the different fonctions that will be used in the application
+    /// of the pattern strategy for the languages.
+    /// Actually can return english or french values
+    /// </summary>
     internal interface IStrategyLanguage
     {
         void BeginAlgorithmTXT();
