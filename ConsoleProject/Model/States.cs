@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// Parent class that defines the differents states functions
+    /// </summary>
     public class States
     {
-        /// <summary>
-        /// Parent class that defines the differents states functions
-        /// </summary>
         public string Name { get; set; }
         public string FileSource { get; set; }
         public string destPath { get; set; }

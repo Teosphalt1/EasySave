@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// The context allows us to define and the set the differents strategies  to use like the language or the save type that will be used
+    /// </summary>
     class Context
     {
         public IStrategyLanguage _strategyLanguage;

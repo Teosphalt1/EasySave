@@ -14,6 +14,10 @@ namespace ConsoleProject
         /// <summary>
         /// This permits to write the logs on json
         /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="newPath"></param>
+        /// <param name="destPath"></param>
+        /// <param name="ts"></param>
         public static void WriteLogsOnJson(string Name, string newPath, string destPath, TimeSpan ts)
         {
 

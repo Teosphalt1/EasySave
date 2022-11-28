@@ -12,7 +12,7 @@ namespace ConsoleProject
     {
         public SaveWork displaySaveWorks()
         {
-            // This method permit to display all the save work and their parameters
+            // This method permit to display all the save work and their parameters from the json database
             string fileName = @"c:\bdd.json";
 
             if (System.IO.File.Exists(fileName))
@@ -30,7 +30,7 @@ namespace ConsoleProject
 
         public SaveWork addNewSaveWork()
         {
-            // This method permits to add a save work by asking 
+            // This method permits to add a save work to the json database by asking 
             // the differents parameters
             string fileName = @"c:\bdd.json";
 

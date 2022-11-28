@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
+    /// <summary>
+    /// Parent class of the differents logs functions
+    /// </summary>
     public class Logs
     {
-        /// <summary>
-        /// Parent class of the differents logs functions
-        /// </summary>
         public string Name { get; set; }
         public string FileSource { get; set; }
         public string destPath { get; set; }
