@@ -10,21 +10,37 @@ Projet Programmation Système
 │   README.md
 │   file001.txt    
 │
-└───folder1
+└───ConsoleProject
 │   │   file011.txt
 │   │   file012.txt
 │   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
+│   └───Controller
+│   │   │   InterfaceLanguage.cs
+│   │   │   InterfaceSaveType.cs
+│   │   │   LaunchProgram.cs
+│	│	|	SelectLanguage.cs
+│	│	|
+│	│	Model
+│   │   │   Context.cs
+│   │   │   DBjson.cs
+│   │   │   Logs.cs
+│	│	│	SaveWork.cs
+│	│	│	States.cs
+│	│	│	WriteLogs.cs
+│	│	|	WriteStates.cs
+│	│	│
+│	│	└───Strategies
+│	│	│	│   AllTheSavesStrategy.cs
+│	│	│	│   EnglishStrategy.cs
+│	│	│	│   LogsExecuteSaveOnCreation.cs
+│	│	│	│	FrenchStrategy.cs
+│	│	│	│	SpecificSaveStrategy.cs
+│	│	────
+│	│	View
+│   │    │   file111.txt
+│   │    │   file112.txt
+│   │    │   ...
+│   │
 │   
-└───folder2
-    │   file021.txt
-    │   file022.txt
+│   
 ```
-
-# Emplacement des fichiers de configuration
-Fichier config 'bdd.json' : C:\\bdd.json
-Fichier logs 'logs.json' : C:\\logs.json
-Fichier statut 'states.json' :C:\\states.json
