@@ -13,6 +13,14 @@ namespace ConsoleProject
         /// <summary>
         /// Theses lines allow us to write the states of the save work
         /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="newPath"></param>
+        /// <param name="destPath"></param>
+        /// <param name="totalFiles"></param>
+        /// <param name="totalSize"></param>
+        /// <param name="dirSize"></param>
+        /// <param name="filesLeft"></param>
+        /// <param name="state"></param>
         public static void WriteStatesOnJson(string Name, string newPath, string destPath, int totalFiles, long totalSize, long dirSize, int filesLeft, string state)
         {
             string fileName = @"c:\states.json";
