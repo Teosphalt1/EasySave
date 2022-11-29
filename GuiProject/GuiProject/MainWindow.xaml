@@ -7,8 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Tag="English" HorizontalAlignment="Left" Margin="207,232,0,0" VerticalAlignment="Top" Click="LanguageSelection_Click">English</Button>
-        <Button Tag="French" HorizontalAlignment="Left" Margin="506,252,0,0" VerticalAlignment="Top" Click="LanguageSelection_Click">French</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Background="Green" Grid.Row="0">
+            <TextBlock FontSize="20" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="GreenYellow">EasySave</TextBlock>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Grid.Column="0" Background="Red" >
+                <Button Tag="English" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="LanguageSelection_Click" >English</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Grid.Column="1" Background="Blue">
+                <Button Tag="French" HorizontalAlignment="center" VerticalAlignment="Center"  Click="LanguageSelection_Click" >French</Button>
+            </StackPanel>
 
+        </Grid>
     </Grid>
 </Window>
