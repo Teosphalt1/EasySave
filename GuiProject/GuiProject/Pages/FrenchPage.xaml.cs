@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -69,6 +70,10 @@ namespace GuiProject.Pages
                     break;
 
                 case "ExecuteAllSaveWorks":
+                    //while (Process.GetProcessesByName("Calculator").Length > 0)
+                    //{
+                    //    MessageBox.Show("ca tourne");
+                    //}
                     new ExecuteAllTheSaves().ExecuteSave();
                     MessageBox.Show("Sauvegardes effectuées");
                     break;

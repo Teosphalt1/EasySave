@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,17 @@ namespace GUIProject
                 var myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
                 TimeSpan ts = new TimeSpan(0);
                 string state = "Active";
+                
                 foreach (var post in myPosts)
                 {
+                    while ((Process.GetProcessesByName("Calculator").Length > 0))
+                    {
+                        Thread.Sleep(1000);
+                    }
                     try
                     {
+                        int test = Process.GetProcessesByName("Calculator").Length;
+                        Console.WriteLine(test);
                         foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
                         {
                             Directory.CreateDirectory(dirPath.Replace(post.FileSource, post.destPath));
@@ -42,45 +50,57 @@ namespace GUIProject
                             long totalSize = dirSize;
                             foreach (string newPath in Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories))
                             {
-                                long actualFileSize = new System.IO.FileInfo(newPath).Length;
-                                long sizeleft = dirSize - actualFileSize;
-                                dirSize -= actualFileSize;
-                                int filesLeft = totalFiles - i;
-
-                                Stopwatch stopWatch = new Stopwatch();
-                                stopWatch.Start();
-
-                                string myPath = Path.GetDirectoryName(newPath);
-                                i += 1;
-                                if (i < totalFiles + 1)
+                                test = Process.GetProcessesByName("Calculator").Length;
+                                if (test > 0)
                                 {
-                                    state = "Active";
-
+                                    ts = new TimeSpan(-1);
+                                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                                    break;
                                 }
                                 else
                                 {
-                                    state = "Ended";
-                                }
+                                    long actualFileSize = new System.IO.FileInfo(newPath).Length;
+                                    long sizeleft = dirSize - actualFileSize;
+                                    dirSize -= actualFileSize;
+                                    int filesLeft = totalFiles - i;
 
-                                if (post.type == "differential")
-                                {
-                                    DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
-                                    DateTime Test = Convert.ToDateTime(post.time);
-                                    int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
-                                    if (compareDateTime > 0)
+                                    Stopwatch stopWatch = new Stopwatch();
+                                    stopWatch.Start();
+
+                                    string myPath = Path.GetDirectoryName(newPath);
+                                    i += 1;
+                                    if (i < totalFiles + 1)
+                                    {
+                                        state = "Active";
+
+                                    }
+                                    else
+                                    {
+                                        state = "Ended";
+                                    }
+
+                                    if (post.type == "differential")
+                                    {
+                                        DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
+                                        DateTime Test = Convert.ToDateTime(post.time);
+                                        int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
+                                        if (compareDateTime > 0)
+                                        {
+                                            File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
+                                        }
+                                    }
+                                    else
                                     {
                                         File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                     }
+                                    stopWatch.Stop();
+                                    ts = stopWatch.Elapsed;
+                                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                                    WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
                                 }
-                                else
-                                {
-                                    File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
-                                }
-                                stopWatch.Stop();
-                                ts = stopWatch.Elapsed;
-                                WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                                WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
+                                    
                             }
+
                         }
                         catch
                         {
