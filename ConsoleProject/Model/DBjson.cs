@@ -18,7 +18,7 @@ namespace ConsoleProject
             if (System.IO.File.Exists(fileName))
             {
                 string justText = File.ReadAllText(fileName);
-                var myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
+                var myPosts =   JsonConvert.DeserializeObject<SaveWork[]>(justText);
 
                 foreach (var post in myPosts)
                 {
