@@ -37,7 +37,8 @@ namespace GuiProject
                     Content = new FrenchPage();
                     break;
                 case "English":
-                    MessageBox.Show("English");
+                    //MessageBox.Show("English");
+                    Content = new EnglishPage();
                     break;
                 default:
                     throw new NotImplementedException("");
