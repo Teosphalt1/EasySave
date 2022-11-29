@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GUIProject;
+using GUIProject.core.Services.Strategies;
 using Newtonsoft.Json;
 
 namespace GuiProject.Pages
@@ -65,6 +66,27 @@ namespace GuiProject.Pages
                         new ServiceDB().WriteSaveWork(savework);
                     }
                     new ExecuteSaveOnCreation().ExecuteSave();
+                    break;
+
+                case "ExecuteAllSaveWorks":
+                    new ExecuteAllTheSaves().ExecuteSave();
+                    MessageBox.Show("Sauvegardes effectuées");
+                    break;
+                case "ExecuteOneSaveWork":
+                    string myId = saveWorkToExecuteId.Text;
+                    int intId = Int16.Parse(myId);
+                    ServiceDB serviced = new ServiceDB();
+                    int amountOfSaves = serviced.ToString().Length / 10;
+
+                    if(intId > 0 && intId <= amountOfSaves)
+                    {
+                        new ExecuteOneSave().ExecuteSave(myId);
+                        MessageBox.Show("Sauvegarde effectuée");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mauvais Id");
+                    }
                     
                     break;
                 default:
