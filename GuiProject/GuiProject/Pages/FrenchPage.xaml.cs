@@ -64,7 +64,7 @@ namespace GuiProject.Pages
                     {
                         new ServiceDB().WriteSaveWork(savework);
                     }
-
+                    new ExecuteSaveOnCreation().ExecuteSave();
                     
                     break;
                 default:

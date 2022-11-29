@@ -18,7 +18,7 @@
         <Button HorizontalAlignment="Left" Margin="0,166,0,0" VerticalAlignment="Top">Executer tous les trveaux de sauvegarde</Button>-->
         <TextBox x:Name="saveId" HorizontalAlignment="Left" Margin="21,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Height="18"/>
 
-        <DataGrid x:Name="testList" Margin="262,0,-262,0"/>
+        
         <TextBlock Margin="68,78,422,131" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">Nom</TextBlock>
         <TextBox x:Name="saveName" HorizontalAlignment="Left" Margin="107,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left"  Margin="-1,101,0,0" TextWrapping="Wrap" Text="Source" VerticalAlignment="Top"/>
@@ -31,5 +31,7 @@
             <ComboBoxItem>Différentielle</ComboBoxItem>
         </ComboBox>
 
+
+        <DataGrid x:Name="testList" Margin="262,0,-262,0"/>
     </Grid>
 </Page>
