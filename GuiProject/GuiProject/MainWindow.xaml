@@ -6,37 +6,40 @@
         xmlns:local="clr-namespace:GuiProject"
         mc:Ignorable="d"    
         
-        Title="EasySave" Height="310" Width="310" MinHeight="310" MinWidth="310" Icon="/iconeSave.ico">
-        
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.6*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        Title="EasySave" Height="450" Width="800" MinHeight="310" MinWidth="310" Icon="/iconeSave.ico">
 
-        <StackPanel Orientation="Vertical" Background="White" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image  Height="auto" Width="auto" MaxHeight="100" MaxWidth="100" HorizontalAlignment="Center" VerticalAlignment="center" Source="/iconeSave.png"/>
-        </StackPanel>
-        
-        <Grid Grid.Row="1" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Border Background="White"
+            CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="White" >
-                <Button Tag="English" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="LanguageSelection_Click" Background="White" BorderBrush="White">
-                    <Image Height="auto" Width="auto"  MaxWidth="200" MaxHeight="200" Source="/united-kingdom-flag-round-small.png"/>
-                </Button>
+            <StackPanel Orientation="Vertical" Background="White" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Image  Height="auto" Width="auto" MaxHeight="100" MaxWidth="100" HorizontalAlignment="Center" VerticalAlignment="center" Source="/iconeSave.png"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Background="White">
-                <Button Tag="French" HorizontalAlignment="center" VerticalAlignment="Center"  Click="LanguageSelection_Click" Background="White" BorderBrush="White">
-                    <Image Height="auto" Width="auto" MaxWidth="200" MaxHeight="200" Source="/france-flag-round-small.png"/>
-                </Button>
-            </StackPanel>
+            <Grid Grid.Row="1" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="White" >
+                    <Button Tag="English" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="LanguageSelection_Click" Background="White" BorderBrush="White">
+                        <Image Height="auto" Width="auto"  MaxWidth="200" MaxHeight="200" Source="/united-kingdom-flag-round-small.png"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Background="White">
+                    <Button Tag="French" HorizontalAlignment="center" VerticalAlignment="Center"  Click="LanguageSelection_Click" Background="White" BorderBrush="White">
+                        <Image Height="auto" Width="auto" MaxWidth="200" MaxHeight="200" Source="/france-flag-round-small.png"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+
         </Grid>
-        
-
-    </Grid>
+    </Border>
 </Window>
