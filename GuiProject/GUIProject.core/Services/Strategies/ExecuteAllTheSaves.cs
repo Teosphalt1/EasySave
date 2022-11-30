@@ -34,8 +34,6 @@ namespace GUIProject
                     }
                     try
                     {
-                        int test = Process.GetProcessesByName("Calculator").Length;
-                        Console.WriteLine(test);
                         foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
                         {
                             Directory.CreateDirectory(dirPath.Replace(post.FileSource, post.destPath));
@@ -50,55 +48,43 @@ namespace GUIProject
                             long totalSize = dirSize;
                             foreach (string newPath in Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories))
                             {
-                                test = Process.GetProcessesByName("Calculator").Length;
-                                if (test > 0)
+                                long actualFileSize = new System.IO.FileInfo(newPath).Length;
+                                long sizeleft = dirSize - actualFileSize;
+                                dirSize -= actualFileSize;
+                                int filesLeft = totalFiles - i;
+
+                                Stopwatch stopWatch = new Stopwatch();
+                                stopWatch.Start();
+
+                                string myPath = Path.GetDirectoryName(newPath);
+                                i += 1;
+                                if (i < totalFiles + 1)
                                 {
-                                    ts = new TimeSpan(-1);
-                                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                                    break;
+                                    state = "Active";
                                 }
                                 else
                                 {
-                                    long actualFileSize = new System.IO.FileInfo(newPath).Length;
-                                    long sizeleft = dirSize - actualFileSize;
-                                    dirSize -= actualFileSize;
-                                    int filesLeft = totalFiles - i;
-
-                                    Stopwatch stopWatch = new Stopwatch();
-                                    stopWatch.Start();
-
-                                    string myPath = Path.GetDirectoryName(newPath);
-                                    i += 1;
-                                    if (i < totalFiles + 1)
-                                    {
-                                        state = "Active";
-                                    }
-                                    else
-                                    {
-                                        state = "Ended";
-                                    }
-                                    if (post.type == "differential")
-                                    {
-                                        DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
-                                        DateTime Test = Convert.ToDateTime(post.time);
-                                        int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
-                                        if (compareDateTime > 0)
-                                        {
-                                            File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
-                                        }
-                                    }
-                                    else
+                                    state = "Ended";
+                                }
+                                if (post.type == "differential")
+                                {
+                                    DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
+                                    DateTime Test = Convert.ToDateTime(post.time);
+                                    int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
+                                    if (compareDateTime > 0)
                                     {
                                         File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                     }
-                                    stopWatch.Stop();
-                                    ts = stopWatch.Elapsed;
-                                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                                    WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
                                 }
-                                    
+                                else
+                                {
+                                    File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
+                                }
+                                stopWatch.Stop();
+                                ts = stopWatch.Elapsed;
+                                WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                                WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
                             }
-
                         }
                         catch
                         {

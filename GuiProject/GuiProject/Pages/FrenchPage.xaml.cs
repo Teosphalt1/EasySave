@@ -97,7 +97,7 @@ namespace GuiProject.Pages
                         MessageBox.Show("Nouveau travail ajouté");
                     }
                     break;
-                case "ExecuteAllSaveWorks":
+                case "ExecuteSaveWorks":
                     new ExecuteAllTheSaves().ExecuteSave();
                     MessageBox.Show($"{LangHelper.GetString("Save done")}");
                     break;
