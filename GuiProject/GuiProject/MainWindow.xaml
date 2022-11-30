@@ -4,28 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GuiProject"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d"    
+        
+        Title="EasySave" Height="310" Width="310" MinHeight="310" MinWidth="310" Icon="/iconeSave.ico">
+        
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Background="Green" Grid.Row="0">
-            <TextBlock FontSize="20" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="GreenYellow">EasySave</TextBlock>
+
+        <StackPanel Orientation="Vertical" Background="White" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Image  Height="auto" Width="auto" MaxHeight="100" MaxWidth="100" HorizontalAlignment="Center" VerticalAlignment="center" Source="/iconeSave.png"/>
         </StackPanel>
-        <Grid Grid.Row="1">
+        
+        <Grid Grid.Row="1" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Grid.Column="0" Background="Red" >
-                <Button Tag="English" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="LanguageSelection_Click" >English</Button>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Grid.Column="1" Background="Blue">
-                <Button Tag="French" HorizontalAlignment="center" VerticalAlignment="Center"  Click="LanguageSelection_Click" >French</Button>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="White" >
+                <Button Tag="English" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="LanguageSelection_Click" Background="White" BorderBrush="White">
+                    <Image Height="auto" Width="auto"  MaxWidth="200" MaxHeight="200" Source="/united-kingdom-flag-round-small.png"/>
+                </Button>
             </StackPanel>
 
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Background="White">
+                <Button Tag="French" HorizontalAlignment="center" VerticalAlignment="Center"  Click="LanguageSelection_Click" Background="White" BorderBrush="White">
+                    <Image Height="auto" Width="auto" MaxWidth="200" MaxHeight="200" Source="/france-flag-round-small.png"/>
+                </Button>
+            </StackPanel>
         </Grid>
+        
+
     </Grid>
 </Window>
