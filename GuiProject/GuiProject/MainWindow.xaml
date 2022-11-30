@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:GuiProject"
         mc:Ignorable="d"    
         
-        Title="EasySave" Height="450" Width="800" MinHeight="310" MinWidth="310" Icon="/iconeSave.ico">
+        Title="EasySave" Height="550" Width="930" MinHeight="550" MinWidth="930" Icon="/iconeSave.ico">
 
-    <Border Background="White"
-            CornerRadius="20">
+    <Border Background="White">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.6*"/>
