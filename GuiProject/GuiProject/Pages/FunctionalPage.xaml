@@ -56,7 +56,7 @@
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <DataGrid x:Name="testList" Height="450"/>
+                <DataGrid x:Name="ListSaveWorks" Height="450"/>
             </StackPanel>
         </Grid>
     </Border>

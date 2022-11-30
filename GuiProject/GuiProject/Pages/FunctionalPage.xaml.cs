@@ -57,8 +57,10 @@ namespace GuiProject.Pages
             {
                 case "DisplaySaveWorks":
                     ServiceDB servicedb = new ServiceDB();
+                    servicedb.GetAll().Clear();
                     servicedb.GenerateSaveWork();
-                    testList.ItemsSource = servicedb.GetAll();
+                    ListSaveWorks.Items.Refresh();
+                    ListSaveWorks.ItemsSource = servicedb.GetAll();
                     break;
                 case "AddSaveWork":
                     DateTime now = DateTime.Now;
