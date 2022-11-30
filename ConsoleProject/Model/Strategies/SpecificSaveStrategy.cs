@@ -97,6 +97,7 @@ namespace ConsoleProject
                                         stopWatch.Stop();
                                         ts = stopWatch.Elapsed;
                                         WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                                        WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                                         WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
                                     }
                                 }
@@ -105,6 +106,7 @@ namespace ConsoleProject
                                     ts = new TimeSpan(-1);
                                     string newPath = "error";
                                     Console.WriteLine("Error cant find source of " + post.Name);
+                                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                                     WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
                                 }
                             }
@@ -113,6 +115,7 @@ namespace ConsoleProject
                                 ts = new TimeSpan(-1);
                                 string newPath = "error";
                                 Console.WriteLine("Error cant find source of " + post.Name);
+                                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                                 WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
                             }
                         }
