@@ -34,11 +34,13 @@ namespace GuiProject
             {
                 case "French":
                     //MessageBox.Show("Français");
+                    LangHelper.ChangeLanguage("fr");
                     Content = new FrenchPage();
                     break;
                 case "English":
                     //MessageBox.Show("English");
-                    Content = new EnglishPage();
+                    LangHelper.ChangeLanguage("");
+                    Content = new FrenchPage();
                     break;
                 default:
                     throw new NotImplementedException("");

@@ -21,37 +21,37 @@
             </Grid.RowDefinitions>
 
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.RowSpan="2" Margin="2,0,2,0" >
-                
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Margin="0,7,0,0">AFFICHER LES TRAVAUX DE SAUVEGARDE</TextBlock>
-                <Button Tag="DisplaySaveWorks" Click="LeftMenu_Click" FontSize="12" Margin="0,8,0,0">Afficher les travaux de sauvegarde</Button>
+
+                <TextBlock x:Name="displaySaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Margin="0,7,0,0" Text=""></TextBlock>
+                <Button x:Name="displaySaveWorkMin" Tag="DisplaySaveWorks" Click="LeftMenu_Click" FontSize="12" Margin="0,8,0,0" Content=""></Button>
                 <Separator Height="15" Background="Transparent"/>
 
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold">AJOUTER UN TRAVAIL DE SAUVEGARDE</TextBlock>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto">Nom</TextBlock>
+                <TextBlock x:Name="addSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
+                <TextBlock x:Name="name" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
                 <TextBox x:Name="saveName" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto">Source</TextBlock>
+                <TextBlock x:Name="source" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
                 <TextBox x:Name="saveSource" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="18"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto">Destination</TextBlock>
+                <TextBlock x:Name="destination" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
                 <TextBox x:Name="saveDest" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="18"/>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto">Type de sauvegarde</TextBlock>
+                <TextBlock x:Name="saveTypeText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
                 <ComboBox x:Name="saveType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120">
-                    <ComboBoxItem>Complète</ComboBoxItem>
-                    <ComboBoxItem>Différentielle</ComboBoxItem>
+                    <ComboBoxItem x:Name="complete" Content=""></ComboBoxItem>
+                    <ComboBoxItem x:Name="differential" Content=""></ComboBoxItem>
                 </ComboBox>
-                <Button Tag="AddSaveWork" Click="LeftMenu_Click" FontSize="12" Margin="0,8,0,0">Ajouter des travaux de sauvegarde</Button>
+                <Button x:Name="addSaveWorkMin" Tag="AddSaveWork" Click="LeftMenu_Click" FontSize="12" Margin="0,8,0,0" Content=""></Button>
                 <Separator Height="18" Background="Transparent"/>
 
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold">EXECUTER UN TRAVAIL DE SAUVEGARDE</TextBlock>
+                <TextBlock x:Name="executeSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto">ID</TextBlock>
+                    <TextBlock x:Name="id" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
                     <TextBox x:Name="saveWorkToExecuteId" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18" Margin="5,0,0,0"/>
                 </StackPanel>
 
-                <Button Tag="ExecuteOneSaveWork" Click="LeftMenu_Click" FontSize="12">Exécuter le travail de sauvegarde</Button>
+                <Button x:Name="executeSaveWorkMin" Tag="ExecuteOneSaveWork" Click="LeftMenu_Click" FontSize="12" Content=""></Button>
                 <Separator Height="15" Background="Transparent"/>
 
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold">EXECUTER TOUS LES TRAVAUX DE SAUVEGARDE</TextBlock>
-                <Button Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="10">Exécuter tous les travaux de sauvegarde</Button>
+                <TextBlock x:Name="executeAllSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
+                <Button x:Name="executeAllSaveWorkMin" Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="10" Content=""></Button>
 
             </StackPanel>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GuiProject.Language;
+using System.Xml.Linq;
 using GUIProject;
 using GUIProject.core.Services.Strategies;
 using Newtonsoft.Json;
@@ -28,6 +31,22 @@ namespace GuiProject.Pages
         public FrenchPage()
         {
             InitializeComponent();
+            
+            displaySaveWorkMaj.Text = LangHelper.GetString("Display save work maj");
+            displaySaveWorkMin.Content = LangHelper.GetString("Display save work min");
+            addSaveWorkMin.Content = LangHelper.GetString("Add save work min");
+            addSaveWorkMaj.Text = LangHelper.GetString("Add save work maj");
+            name.Text = LangHelper.GetString("Name");
+            id.Text = LangHelper.GetString("Id");
+            source.Text = LangHelper.GetString("Source");
+            saveTypeText.Text = LangHelper.GetString("Save type");
+            executeAllSaveWorkMaj.Text= LangHelper.GetString("Execute all save work maj");
+            executeAllSaveWorkMin.Content = LangHelper.GetString("Execute all save work min");
+            executeSaveWorkMaj.Text = LangHelper.GetString("Execute save work maj");
+            executeSaveWorkMin.Content = LangHelper.GetString("Execute save work min");
+            complete.Content = LangHelper.GetString("Complete");
+            differential.Content = LangHelper.GetString("Differential");
+            destination.Text = LangHelper.GetString("Destination");
         }
 
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
@@ -80,7 +99,7 @@ namespace GuiProject.Pages
                     break;
                 case "ExecuteAllSaveWorks":
                     new ExecuteAllTheSaves().ExecuteSave();
-                    MessageBox.Show("Sauvegardes effectuées");
+                    MessageBox.Show($"{LangHelper.GetString("Save done")}");
                     break;
                 case "ExecuteOneSaveWork":
                     string myId = saveWorkToExecuteId.Text;
@@ -90,11 +109,11 @@ namespace GuiProject.Pages
                     if(intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
                     {
                         new ExecuteOneSave().ExecuteSave(myId);
-                        MessageBox.Show("Sauvegarde effectuée");
+                        MessageBox.Show($"{LangHelper.GetString("Save done")}");
                     }
                     else
                     {
-                        MessageBox.Show("Mauvais Id");
+                        MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
                     }
                     
                     break;
