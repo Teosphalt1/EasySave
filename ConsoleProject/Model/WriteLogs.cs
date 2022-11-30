@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace ConsoleProject
 {
@@ -49,6 +50,59 @@ namespace ConsoleProject
                 myPosts.Add(logs);
                 string json = System.Text.Json.JsonSerializer.Serialize(myPosts, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(fileName, json);
+            }
+        }
+
+        public static void WriteLogsOnXML(string Name, string newPath, string destPath, TimeSpan ts)
+        {
+            string elapsedTime = ts.ToString();
+
+            string fileName = @"c:\logs.xml";
+
+            if (File.Exists(fileName))
+            {
+                XmlDocument xdoc = new XmlDocument();
+                xdoc.Load(fileName); ;
+
+                long length;
+                try
+                {
+                    length = new System.IO.FileInfo(newPath).Length;
+                }
+                catch
+                {
+                    length = 0;
+                }
+
+                XmlNode save = xdoc.CreateElement("Save");
+                XmlNode name = xdoc.CreateElement("Name");
+                XmlNode FileSource = xdoc.CreateElement("FileSource");
+                XmlNode DestPath = xdoc.CreateElement("destPath");
+                XmlNode Time = xdoc.CreateElement("time");
+                XmlNode Size = xdoc.CreateElement("size");
+                XmlNode transferTime = xdoc.CreateElement("transferTime");
+                
+
+                name.InnerText = Name;
+                FileSource.InnerText = newPath;
+                DestPath.InnerText = destPath + @"\" + Path.GetFileName(newPath);
+                Time.InnerText = ts.ToString();
+                Size.InnerText = length.ToString();
+                transferTime.InnerText = elapsedTime;
+                
+
+
+
+                save.AppendChild(name);
+                save.AppendChild(FileSource);
+                save.AppendChild(DestPath);
+                save.AppendChild(Time);
+                save.AppendChild(Size);
+                save.AppendChild(transferTime);
+
+
+                xdoc.DocumentElement.AppendChild(save);
+                xdoc.Save(fileName);
             }
         }
     }
