@@ -72,13 +72,11 @@ namespace GUIProject
                                     if (i < totalFiles + 1)
                                     {
                                         state = "Active";
-
                                     }
                                     else
                                     {
                                         state = "Ended";
                                     }
-
                                     if (post.type == "differential")
                                     {
                                         DateTime lastModifiedTime = File.GetLastWriteTime(newPath);

@@ -52,28 +52,33 @@ namespace GuiProject.Pages
                     {
                         mySaveType = "differential";
                     }
-                    SaveWork savework = new SaveWork
-                    {
-                        
-                        id = Convert.ToInt16(saveId.Text),
-                        Name = saveName.Text,
-                        FileSource = saveSource.Text,
-                        destPath = saveDest.Text,
-                        type = mySaveType,
-                        time = now.ToString()
-                    };
-                    if(savework != null )
-                    {
-                        new ServiceDB().WriteSaveWork(savework);
-                    }
-                    new ExecuteSaveOnCreation().ExecuteSave();
-                    break;
 
+                    if(saveName.Text.Length == 0 || saveSource.Text.Length == 0 || saveDest.Text.Length == 0)
+                    {
+                        MessageBox.Show("Il manque au moins un champ requis");
+                    }
+                    else
+                    {
+                        ServiceDB servicet = new ServiceDB();
+                        servicet.GenerateSaveWork();
+                        SaveWork savework = new SaveWork
+                        {
+                            id = servicet.GetAll().LastOrDefault().id + 1,
+                            Name = saveName.Text,
+                            FileSource = saveSource.Text,
+                            destPath = saveDest.Text,
+                            type = mySaveType,
+                            time = now.ToString()
+                        };
+                        if (savework != null)
+                        {
+                            new ServiceDB().WriteSaveWork(savework);
+                        }
+                        new ExecuteSaveOnCreation().ExecuteSave();
+                        MessageBox.Show("Nouveau travail ajouté");
+                    }
+                    break;
                 case "ExecuteAllSaveWorks":
-                    //while (Process.GetProcessesByName("Calculator").Length > 0)
-                    //{
-                    //    MessageBox.Show("ca tourne");
-                    //}
                     new ExecuteAllTheSaves().ExecuteSave();
                     MessageBox.Show("Sauvegardes effectuées");
                     break;
@@ -81,9 +86,8 @@ namespace GuiProject.Pages
                     string myId = saveWorkToExecuteId.Text;
                     int intId = Int16.Parse(myId);
                     ServiceDB serviced = new ServiceDB();
-                    int amountOfSaves = serviced.ToString().Length / 10;
-
-                    if(intId > 0 && intId <= amountOfSaves)
+                    serviced.GenerateSaveWork();
+                    if(intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
                     {
                         new ExecuteOneSave().ExecuteSave(myId);
                         MessageBox.Show("Sauvegarde effectuée");
