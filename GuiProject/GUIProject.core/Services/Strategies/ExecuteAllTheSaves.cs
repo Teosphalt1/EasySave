@@ -84,6 +84,7 @@ namespace GUIProject
                                 ts = stopWatch.Elapsed;
                                 WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
                                 WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
+                                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                             }
                         }
                         catch
@@ -91,6 +92,7 @@ namespace GUIProject
                             ts = new TimeSpan(-1);
                             string newPath = "error";
                             WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                            WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                         }
                     }
                     catch
@@ -98,6 +100,7 @@ namespace GUIProject
                         ts = new TimeSpan(-1);
                         string newPath = "error";
                         WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                        WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                     }
                 }
             }

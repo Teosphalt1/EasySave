@@ -97,7 +97,9 @@ namespace GUIProject.core.Services.Strategies
                                         stopWatch.Stop();
                                         ts = stopWatch.Elapsed;
                                         WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                                        WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                                         WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
+                                        
                                     }
                                 }
                                 catch
@@ -106,6 +108,7 @@ namespace GUIProject.core.Services.Strategies
                                     string newPath = "error";
                                     Console.WriteLine("Error cant find source of " + post.Name);
                                     WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                                 }
                             }
                             catch
@@ -114,6 +117,7 @@ namespace GUIProject.core.Services.Strategies
                                 string newPath = "error";
                                 Console.WriteLine("Error cant find source of " + post.Name);
                                 WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                             }
                         }
 
