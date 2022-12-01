@@ -147,14 +147,14 @@
   <data name="Execute all save work min" xml:space="preserve">
     <value>Execute all save work</value>
   </data>
-  <data name="Execute save work" xml:space="preserve">
-    <value>Execute save work</value>
-  </data>
   <data name="Execute save work maj" xml:space="preserve">
     <value>EXECUTE SAVE WORK</value>
   </data>
   <data name="Execute save work min" xml:space="preserve">
     <value>Execute save work</value>
+  </data>
+  <data name="Field missing" xml:space="preserve">
+    <value>At least one field is missing</value>
   </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
@@ -167,6 +167,9 @@
   </data>
   <data name="Save type" xml:space="preserve">
     <value>Save type</value>
+  </data>
+  <data name="Save work added" xml:space="preserve">
+    <value>Save work added</value>
   </data>
   <data name="Source" xml:space="preserve">
     <value>Source</value>

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,10 @@ namespace GUIProject
                 var myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
                 foreach (var post in myPosts)
                 {
+                    while ((Process.GetProcessesByName("Calculator").Length > 0))
+                    {
+                        Thread.Sleep(10);
+                    }
                     if (post == myPosts.Last())
                     {
                         try

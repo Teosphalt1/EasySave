@@ -31,7 +31,11 @@
     <ProjectReference Include="..\GUIProject.core\GUIProject.core.csproj" />
   </ItemGroup>
 
+<<<<<<< HEAD
 	<ItemGroup>
+=======
+  <ItemGroup>
+>>>>>>> cf8706362fb608278f8a330b2c74b85cb33752f8
     <Resource Include="france-flag-round-small.png" />
     <Resource Include="icone.ico" />
     <Resource Include="iconeSave.ico" />

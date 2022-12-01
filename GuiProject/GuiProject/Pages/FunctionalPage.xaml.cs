@@ -76,7 +76,7 @@ namespace GuiProject.Pages
 
                     if(saveName.Text.Length == 0 || saveSource.Text.Length == 0 || saveDest.Text.Length == 0)
                     {
-                        MessageBox.Show("Il manque au moins un champ requis");
+                        MessageBox.Show($"{LangHelper.GetString("Field missing")}");
                     }
                     else
                     {
@@ -96,7 +96,11 @@ namespace GuiProject.Pages
                             new ServiceDB().WriteSaveWork(savework);
                         }
                         new ExecuteSaveOnCreation().ExecuteSave();
-                        MessageBox.Show("Nouveau travail ajouté");
+                        servicet.GetAll().Clear();
+                        servicet.GenerateSaveWork();
+                        ListSaveWorks.Items.Refresh();
+                        ListSaveWorks.ItemsSource = servicet.GetAll();
+                        MessageBox.Show($"{LangHelper.GetString("Save work added")}");
                     }
                     break;
                 case "ExecuteSaveWorks":
@@ -105,19 +109,25 @@ namespace GuiProject.Pages
                     break;
                 case "ExecuteOneSaveWork":
                     string myId = saveWorkToExecuteId.Text;
-                    int intId = Int16.Parse(myId);
-                    ServiceDB serviced = new ServiceDB();
-                    serviced.GenerateSaveWork();
-                    if(intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
-                    {
-                        new ExecuteOneSave().ExecuteSave(myId);
-                        MessageBox.Show($"{LangHelper.GetString("Save done")}");
-                    }
-                    else
+                    if(myId == "")
                     {
                         MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
                     }
-                    
+                    else
+                    {
+                        int intId = Int16.Parse(myId);
+                        ServiceDB serviced = new ServiceDB();
+                        serviced.GenerateSaveWork();
+                        if (intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
+                        {
+                            new ExecuteOneSave().ExecuteSave(myId);
+                            MessageBox.Show($"{LangHelper.GetString("Save done")}");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
+                        }
+                    }
                     break;
                 default:
                     break;
