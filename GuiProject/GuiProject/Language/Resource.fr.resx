@@ -126,6 +126,9 @@
   <data name="Bad Id" xml:space="preserve">
     <value>Mauvais Id</value>
   </data>
+  <data name="Blocking software" xml:space="preserve">
+    <value>Logiciel bloquant</value>
+  </data>
   <data name="Complete" xml:space="preserve">
     <value>Complète </value>
   </data>

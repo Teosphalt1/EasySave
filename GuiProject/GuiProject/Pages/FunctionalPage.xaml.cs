@@ -24,11 +24,11 @@ using Newtonsoft.Json;
 namespace GuiProject.Pages
 {
     /// <summary>
-    /// Logique d'interaction pour FrenchPage.xaml
+    /// Logique d'interaction pour FunctionalPage.xaml
     /// </summary>
-    public partial class FrenchPage : Page
+    public partial class FunctionalPage : Page
     {
-        public FrenchPage()
+        public FunctionalPage()
         {
             InitializeComponent();
             
@@ -47,6 +47,7 @@ namespace GuiProject.Pages
             complete.Content = LangHelper.GetString("Complete");
             differential.Content = LangHelper.GetString("Differential");
             destination.Text = LangHelper.GetString("Destination");
+            blockingSoftware.Text = LangHelper.GetString("Blocking software");
         }
 
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
