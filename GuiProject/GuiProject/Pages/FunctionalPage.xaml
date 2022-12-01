@@ -54,14 +54,8 @@
                 <Button x:Name="executeAllSaveWorkMin" Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="10" Content=""></Button>
 
             </StackPanel>
-
-<<<<<<< HEAD
             <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,0,18,0">
-                <DataGrid x:Name="testList" Height="450"/>
-=======
-            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <DataGrid x:Name="ListSaveWorks" Height="450"/>
->>>>>>> 09ab9f460bba1945f933f1afb010e48a50a5d0df
             </StackPanel>
         </Grid>
     </Border>
