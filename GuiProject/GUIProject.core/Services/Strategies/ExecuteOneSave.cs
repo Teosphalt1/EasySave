@@ -19,7 +19,7 @@ namespace GUIProject.core.Services.Strategies
         /// Will gather the informations to fill logs.json
         /// Will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string myId)
+        public void ExecuteSave(string myId, string blockIfRunning)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -34,7 +34,7 @@ namespace GUIProject.core.Services.Strategies
 
                 foreach (var post in myPosts)
                 {
-                    while ((Process.GetProcessesByName("Calculator").Length > 0))
+                    while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
                     {
                         Thread.Sleep(10);
                     }

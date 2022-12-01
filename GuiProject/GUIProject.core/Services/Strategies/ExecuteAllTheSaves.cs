@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace GUIProject
 {
-    public class ExecuteAllTheSaves : IStrategySaveType
+    public class ExecuteAllTheSaves
     {
         /// <summary>
         /// Will execute all the different save works registered on bdd.json
         /// will gather the informations to fill logs.json
         /// will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave()
+        public void ExecuteSave(string blockIfRunning)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))

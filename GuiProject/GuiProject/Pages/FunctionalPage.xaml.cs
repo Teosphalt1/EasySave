@@ -104,10 +104,12 @@ namespace GuiProject.Pages
                     }
                     break;
                 case "ExecuteSaveWorks":
-                    new ExecuteAllTheSaves().ExecuteSave();
+                    string blockIfRunningAll = BlockIfRunning.Text;
+                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll);
                     MessageBox.Show($"{LangHelper.GetString("Save done")}");
                     break;
                 case "ExecuteOneSaveWork":
+                    string blockIfRunningOne = BlockIfRunning.Text;
                     string myId = saveWorkToExecuteId.Text;
                     if(myId == "")
                     {
@@ -120,7 +122,7 @@ namespace GuiProject.Pages
                         serviced.GenerateSaveWork();
                         if (intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
                         {
-                            new ExecuteOneSave().ExecuteSave(myId);
+                            new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne);
                             MessageBox.Show($"{LangHelper.GetString("Save done")}");
                         }
                         else

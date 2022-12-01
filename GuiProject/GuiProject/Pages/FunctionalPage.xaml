@@ -52,6 +52,8 @@
 
                 <TextBlock x:Name="executeAllSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
                 <Button x:Name="executeAllSaveWorkMin" Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="10" Content=""></Button>
+                
+                <TextBox x:Name="BlockIfRunning" TextWrapping="Wrap"  Width="120"/>
 
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,0,18,0">
