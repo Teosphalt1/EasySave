@@ -28,7 +28,7 @@ namespace GUIProject
                 
                 foreach (var post in myPosts)
                 {
-                    while ((Process.GetProcessesByName("Calculator").Length > 0))
+                    while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
                     {
                         Thread.Sleep(10);
                     }
