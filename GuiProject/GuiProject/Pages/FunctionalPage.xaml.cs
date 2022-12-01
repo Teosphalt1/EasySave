@@ -76,7 +76,7 @@ namespace GuiProject.Pages
 
                     if(saveName.Text.Length == 0 || saveSource.Text.Length == 0 || saveDest.Text.Length == 0)
                     {
-                        MessageBox.Show("Il manque au moins un champ requis");
+                        MessageBox.Show($"{LangHelper.GetString("Field missing")}");
                     }
                     else
                     {
@@ -100,7 +100,7 @@ namespace GuiProject.Pages
                         servicet.GenerateSaveWork();
                         ListSaveWorks.Items.Refresh();
                         ListSaveWorks.ItemsSource = servicet.GetAll();
-                        MessageBox.Show("Nouveau travail ajouté");       
+                        MessageBox.Show($"{LangHelper.GetString("Save work added")}");
                     }
                     break;
                 case "ExecuteSaveWorks":

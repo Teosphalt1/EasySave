@@ -9,15 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="drapeau-france.jpg" />
-    <None Remove="drapeau-royaume-uni.jpg" />
     <None Remove="france-flag-round-small.png" />
-    <None Remove="france-flag-small.png" />
     <None Remove="icone.ico" />
     <None Remove="iconeSave.ico" />
     <None Remove="iconeSave.png" />
     <None Remove="united-kingdom-flag-round-small.png" />
-    <None Remove="united-kingdom-flag-small.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,15 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="drapeau-france.jpg" />
-    <Resource Include="drapeau-royaume-uni.jpg" />
     <Resource Include="france-flag-round-small.png" />
-    <Resource Include="france-flag-small.png" />
     <Resource Include="icone.ico" />
     <Resource Include="iconeSave.ico" />
     <Resource Include="iconeSave.png" />
     <Resource Include="united-kingdom-flag-round-small.png" />
-    <Resource Include="united-kingdom-flag-small.png" />
   </ItemGroup>
 
 </Project>
