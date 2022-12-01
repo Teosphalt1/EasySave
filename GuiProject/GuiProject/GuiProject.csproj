@@ -9,18 +9,34 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="france-flag-round-small.png" />
-    <None Remove="icone.ico" />
     <None Remove="iconeSave.ico" />
     <None Remove="iconeSave.png" />
-    <None Remove="Pages\pause-button.png" />
-    <None Remove="Pages\play-button.png" />
-    <None Remove="Pages\stop-button.png" />
-    <None Remove="united-kingdom-flag-round-small.png" />
+    <None Remove="Images\france-flag-round-small.png" />
+    <None Remove="Images\pause-button.png" />
+    <None Remove="Images\play-button.png" />
+    <None Remove="Images\stop-button.png" />
+    <None Remove="Images\united-kingdom-flag-round-small.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\iconeSave.ico" />
+    <Content Include="Images\france-flag-round-small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\iconeSave.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pause-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\play-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\stop-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\united-kingdom-flag-round-small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -32,14 +48,10 @@
   </ItemGroup>
 
 	<ItemGroup>
-    <Resource Include="france-flag-round-small.png" />
-    <Resource Include="icone.ico" />
     <Resource Include="iconeSave.ico" />
-    <Resource Include="iconeSave.png" />
-    <Resource Include="Pages\pause-button.png" />
-    <Resource Include="Pages\play-button.png" />
-    <Resource Include="Pages\stop-button.png" />
-    <Resource Include="united-kingdom-flag-round-small.png" />
+    <Content Include="Images\iconeSave.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

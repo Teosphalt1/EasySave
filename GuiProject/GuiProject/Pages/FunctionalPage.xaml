@@ -60,15 +60,15 @@
 
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,47">
                 <Button x:Name="playButton" Tag="StartSaveWorks" Click="LeftMenu_Click" Margin="0,80,0,0">
-                    <Image Height="40" Width="40" Source="/Pages/play-button.png"/>
+                    <Image Height="40" Width="40" Source="/Images/play-button.png"/>
                 </Button>
                 
                 <Button x:Name="pauseButton" Tag="PauseSaveWorks" Click="LeftMenu_Click" Margin="0,80,0,0">
-                    <Image Height="40" Width="40" Source="/Pages/pause-button.png" />
+                    <Image Height="40" Width="40" Source="/Images/pause-button.png" />
                 </Button>
                 
                 <Button x:Name="stopButton" Tag="StopSaveWorks" Click="LeftMenu_Click" Margin="0,80,0,0">
-                    <Image Height="40" Width="40" Source="/Pages/stop-button.png" />
+                    <Image Height="40" Width="40" Source="/Images/stop-button.png" />
                 </Button>
             </StackPanel>
         </Grid>

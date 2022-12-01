@@ -16,7 +16,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Vertical" Background="White" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Image  Height="auto" Width="auto" MaxHeight="100" MaxWidth="100" HorizontalAlignment="Center" VerticalAlignment="center" Source="/iconeSave.png"/>
+                <Image  Height="auto" Width="auto" MaxHeight="100" MaxWidth="100" HorizontalAlignment="Center" VerticalAlignment="center" Source="Images/iconeSave.png"/>
             </StackPanel>
 
             <Grid Grid.Row="1" Background="White">
@@ -27,13 +27,13 @@
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Background="White" >
                     <Button Tag="English" HorizontalAlignment="Center"  VerticalAlignment="Center" Click="LanguageSelection_Click" Background="White" BorderBrush="White">
-                        <Image Height="auto" Width="auto"  MaxWidth="200" MaxHeight="200" Source="/united-kingdom-flag-round-small.png"/>
+                        <Image Height="auto" Width="auto"  MaxWidth="200" MaxHeight="200" Source="Images/united-kingdom-flag-round-small.png"/>
                     </Button>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Background="White">
                     <Button Tag="French" HorizontalAlignment="center" VerticalAlignment="Center"  Click="LanguageSelection_Click" Background="White" BorderBrush="White">
-                        <Image Height="auto" Width="auto" MaxWidth="200" MaxHeight="200" Source="/france-flag-round-small.png"/>
+                        <Image Height="auto" Width="auto" MaxWidth="200" MaxHeight="200" Source="Images/france-flag-round-small.png"/>
                     </Button>
                 </StackPanel>
             </Grid>
