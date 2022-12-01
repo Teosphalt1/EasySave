@@ -96,7 +96,11 @@ namespace GuiProject.Pages
                             new ServiceDB().WriteSaveWork(savework);
                         }
                         new ExecuteSaveOnCreation().ExecuteSave();
-                        MessageBox.Show("Nouveau travail ajouté");
+                        servicet.GetAll().Clear();
+                        servicet.GenerateSaveWork();
+                        ListSaveWorks.Items.Refresh();
+                        ListSaveWorks.ItemsSource = servicet.GetAll();
+                        MessageBox.Show("Nouveau travail ajouté");       
                     }
                     break;
                 case "ExecuteSaveWorks":

@@ -34,7 +34,7 @@
                 <TextBlock x:Name="destination" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
                 <TextBox x:Name="saveDest" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="18"/>
                 <TextBlock x:Name="saveTypeText" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
-                <ComboBox x:Name="saveType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120">
+                <ComboBox x:Name="saveType" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedIndex="0">
                     <ComboBoxItem x:Name="complete" Content=""></ComboBoxItem>
                     <ComboBoxItem x:Name="differential" Content=""></ComboBoxItem>
                 </ComboBox>
