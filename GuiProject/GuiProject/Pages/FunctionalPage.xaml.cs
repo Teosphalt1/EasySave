@@ -109,19 +109,25 @@ namespace GuiProject.Pages
                     break;
                 case "ExecuteOneSaveWork":
                     string myId = saveWorkToExecuteId.Text;
-                    int intId = Int16.Parse(myId);
-                    ServiceDB serviced = new ServiceDB();
-                    serviced.GenerateSaveWork();
-                    if(intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
-                    {
-                        new ExecuteOneSave().ExecuteSave(myId);
-                        MessageBox.Show($"{LangHelper.GetString("Save done")}");
-                    }
-                    else
+                    if(myId == "")
                     {
                         MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
                     }
-                    
+                    else
+                    {
+                        int intId = Int16.Parse(myId);
+                        ServiceDB serviced = new ServiceDB();
+                        serviced.GenerateSaveWork();
+                        if (intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
+                        {
+                            new ExecuteOneSave().ExecuteSave(myId);
+                            MessageBox.Show($"{LangHelper.GetString("Save done")}");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
+                        }
+                    }
                     break;
                 default:
                     break;
