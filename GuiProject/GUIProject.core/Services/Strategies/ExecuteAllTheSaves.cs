@@ -30,7 +30,7 @@ namespace GUIProject
                 {
                     while ((Process.GetProcessesByName("Calculator").Length > 0))
                     {
-                        Thread.Sleep(1000);
+                        Thread.Sleep(10);
                     }
                     try
                     {

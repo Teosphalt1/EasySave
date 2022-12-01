@@ -27,88 +27,75 @@ namespace GUIProject.core.Services.Strategies
                 string justText = File.ReadAllText(fileName);
                 var myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
                 TimeSpan ts = new TimeSpan(0);
-                //string myId = Console.ReadLine();
 
-                if (Regex.IsMatch(myId, @"^\d+$") == false)
+                int myIdint = Int32.Parse(myId);
+
+                string state = "Active";
+
+                foreach (var post in myPosts)
                 {
-                    //Console.WriteLine("Bad Value");
-                    //ExecuteSave(string myId);
-                }
-                else
-                {
-                    int myIdint = Int32.Parse(myId);
-
-                    string state = "Active";
-
-                    foreach (var post in myPosts)
+                    while ((Process.GetProcessesByName("Calculator").Length > 0))
                     {
-                        if (post.id == myIdint)
+                        Thread.Sleep(10);
+                    }
+                    if (post.id == myIdint)
+                    {
+                        try
                         {
+                            foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
+                            {
+                                Directory.CreateDirectory(dirPath.Replace(post.FileSource, post.destPath));
+                                int fCount = Directory.GetFiles(dirPath, "*", SearchOption.AllDirectories).Length;
+                            }
                             try
                             {
-                                foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
+                                DirectoryInfo dirInfo = new DirectoryInfo(post.FileSource);
+                                int i = 1;
+                                int totalFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories).Length;
+                                long dirSize = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+                                long totalSize = dirSize;
+                                foreach (string newPath in Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories))
                                 {
-                                    Directory.CreateDirectory(dirPath.Replace(post.FileSource, post.destPath));
-                                    int fCount = Directory.GetFiles(dirPath, "*", SearchOption.AllDirectories).Length;
-                                }
-                                try
-                                {
-                                    DirectoryInfo dirInfo = new DirectoryInfo(post.FileSource);
-                                    int i = 1;
-                                    int totalFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories).Length;
-                                    long dirSize = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
-                                    long totalSize = dirSize;
-                                    foreach (string newPath in Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories))
+                                    long actualFileSize = new System.IO.FileInfo(newPath).Length;
+                                    long sizeleft = dirSize - actualFileSize;
+                                    dirSize -= actualFileSize;
+                                    int filesLeft = totalFiles - i;
+
+                                    Stopwatch stopWatch = new Stopwatch();
+                                    stopWatch.Start();
+
+                                    string myPath = Path.GetDirectoryName(newPath);
+                                    i += 1;
+                                    if (i < totalFiles + 1)
                                     {
-                                        long actualFileSize = new System.IO.FileInfo(newPath).Length;
-                                        long sizeleft = dirSize - actualFileSize;
-                                        dirSize -= actualFileSize;
-                                        int filesLeft = totalFiles - i;
+                                        state = "Active";
 
-                                        Stopwatch stopWatch = new Stopwatch();
-                                        stopWatch.Start();
+                                    }
+                                    else
+                                    {
+                                        state = "Ended";
+                                    }
 
-                                        string myPath = Path.GetDirectoryName(newPath);
-                                        i += 1;
-                                        if (i < totalFiles + 1)
-                                        {
-                                            state = "Active";
-
-                                        }
-                                        else
-                                        {
-                                            state = "Ended";
-                                        }
-
-                                        if (post.type == "differential")
-                                        {
-                                            DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
-                                            DateTime Test = Convert.ToDateTime(post.time);
-                                            int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
-                                            if (compareDateTime > 0)
-                                            {
-                                                File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
-                                            }
-                                        }
-                                        else
+                                    if (post.type == "differential")
+                                    {
+                                        DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
+                                        DateTime Test = Convert.ToDateTime(post.time);
+                                        int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
+                                        if (compareDateTime > 0)
                                         {
                                             File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                         }
-                                        stopWatch.Stop();
-                                        ts = stopWatch.Elapsed;
-                                        WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                                        WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
-                                        WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
-                                        
                                     }
-                                }
-                                catch
-                                {
-                                    ts = new TimeSpan(-1);
-                                    string newPath = "error";
-                                    Console.WriteLine("Error cant find source of " + post.Name);
+                                    else
+                                    {
+                                        File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
+                                    }
+                                    stopWatch.Stop();
+                                    ts = stopWatch.Elapsed;
                                     WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
                                     WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                                    WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
+                                        
                                 }
                             }
                             catch
@@ -120,11 +107,17 @@ namespace GUIProject.core.Services.Strategies
                                 WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
                             }
                         }
-
+                        catch
+                        {
+                            ts = new TimeSpan(-1);
+                            string newPath = "error";
+                            Console.WriteLine("Error cant find source of " + post.Name);
+                            WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                            WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                        }
                     }
+
                 }
-
-
             }
         }
     }
