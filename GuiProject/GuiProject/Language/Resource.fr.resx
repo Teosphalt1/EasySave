@@ -153,6 +153,9 @@
   <data name="Execute save work min" xml:space="preserve">
     <value>Executer un travail de sauvegarde</value>
   </data>
+  <data name="Field missing" xml:space="preserve">
+    <value>Il manque au moins un champ</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Save type" xml:space="preserve">
     <value>Type de sauvegarde</value>
+  </data>
+  <data name="Save work added" xml:space="preserve">
+    <value>Travail de sauvegarde ajotué</value>
   </data>
   <data name="Source" xml:space="preserve">
     <value>Source</value>
