@@ -81,11 +81,22 @@ namespace GuiProject.Pages
                     }
                     else
                     {
+                        
                         ServiceDB servicet = new ServiceDB();
                         servicet.GenerateSaveWork();
+                        int amountSaves = servicet.GetAll().Count;
+                        int newSaveId = 0;
+                        if (amountSaves <= 0)
+                        {
+                            newSaveId = 1;
+                        }
+                        else
+                        {
+                            newSaveId = servicet.GetAll().LastOrDefault().id + 1;
+                        }
                         SaveWork savework = new SaveWork
                         {
-                            id = servicet.GetAll().LastOrDefault().id + 1,
+                            id = newSaveId,
                             Name = saveName.Text,
                             FileSource = saveSource.Text,
                             destPath = saveDest.Text,
