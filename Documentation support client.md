@@ -13,7 +13,9 @@ Projet Programmation Système
 │   Documentation support client.md    
 │
 └───ConsoleProject
-│   │   Program.cs
+│   │	ConsoleProject.csproj
+│   │   ConsoleProject.sln
+│   │	Program.cs
 │   │
 │   └───Controller
 │   │   │   InterfaceLanguage.cs
@@ -39,8 +41,60 @@ Projet Programmation Système
 │   │   │
 │   │   View
 │   │   │   View.cs
-│   │   │
-└────────────────────────────────────────────     
+│   └───└────────────────────────────────
+|	|
+└───GuiProject
+│ 	│
+│	└───GuiProject
+│	│	│	App.xaml
+│	│	│	App.xaml.cs
+│	│	│	AssemblyInfo.cs
+│	│	│	GuiProject.csproj
+│	│	│	iconeSave.ico
+│	│	│	Language.cs
+│	│	│	MainWindow.xaml
+│	│	│	MainWindow.xaml.cs
+│	│	│
+│	│	└───Images
+│	│	│	│	france-flag-round-small.png
+│	│	│	│	iconeSave.ico
+│	│	│	│	iconeSave.png
+│	│	│	│	pause-button.png
+│	│	│	│	play-button.png
+│	│	│	│	stop-button.png
+│	│	│	│	united-kingdom-flag-round-small.png
+│	│	│	│
+│	│	│	Language
+│	│	│	│	Resource.Designer.cs
+│	│	│	│	Resource.fr.resx
+│	│	│	│	Resource.resx
+│	│	│	│
+│	│	│	Pages
+│	│	│	│	FunctionalPage.xaml
+│	│	│	│	FunctionalPage.xaml.cs
+│	│	│	│
+│	│	GuiProject.core
+│	│	│	GUIProject.core.csproj
+│	│	│
+│	│	└───Business
+│	│	│	│	Logs.cs
+│	│	│	│	SaveWork.cs
+│	│	│	│	States.cs
+│	│	│	│
+│	│	│	Data
+│	│	│	│	Repository.cs
+│	│	│	│
+│	│	│	Services
+│	│	│	│	InterfaceSaveType.cs
+│	│	│	│	WriteLogs.cs
+│	│	│	│	WriteStates.cs
+│	│	│	│
+│	│	│	└───Strategies
+│	│	│	│	│	ExecuteAllTheSave.cs
+│	│	│	│	│	ExecuteOneSave.cs
+│	│	│	│	│	ExecuteSaveOnCreation.cs
+│	│	│	│	│	ServiceDB.cs
+└───└───└───└───└────────────────────────────────     
 
 ```
 ## Emplacement des fichiers de configuration
@@ -61,11 +115,14 @@ ________________________________________________________________
 
 ## Project spanning tree
 ```
+
 Projet Programmation Système
 │   Documentation support client.md    
 │
 └───ConsoleProject
-│   │   Program.cs
+│   │	ConsoleProject.csproj
+│   │   ConsoleProject.sln
+│   │	Program.cs
 │   │
 │   └───Controller
 │   │   │   InterfaceLanguage.cs
@@ -91,8 +148,60 @@ Projet Programmation Système
 │   │   │
 │   │   View
 │   │   │   View.cs
-│   │   │
-└────────────────────────────────────────────     
+│   └───└────────────────────────────────
+|	|
+└───GuiProject
+│ 	│
+│	└───GuiProject
+│	│	│	App.xaml
+│	│	│	App.xaml.cs
+│	│	│	AssemblyInfo.cs
+│	│	│	GuiProject.csproj
+│	│	│	iconeSave.ico
+│	│	│	Language.cs
+│	│	│	MainWindow.xaml
+│	│	│	MainWindow.xaml.cs
+│	│	│
+│	│	└───Images
+│	│	│	│	france-flag-round-small.png
+│	│	│	│	iconeSave.ico
+│	│	│	│	iconeSave.png
+│	│	│	│	pause-button.png
+│	│	│	│	play-button.png
+│	│	│	│	stop-button.png
+│	│	│	│	united-kingdom-flag-round-small.png
+│	│	│	│
+│	│	│	Language
+│	│	│	│	Resource.Designer.cs
+│	│	│	│	Resource.fr.resx
+│	│	│	│	Resource.resx
+│	│	│	│
+│	│	│	Pages
+│	│	│	│	FunctionalPage.xaml
+│	│	│	│	FunctionalPage.xaml.cs
+│	│	│	│
+│	│	GuiProject.core
+│	│	│	GUIProject.core.csproj
+│	│	│
+│	│	└───Business
+│	│	│	│	Logs.cs
+│	│	│	│	SaveWork.cs
+│	│	│	│	States.cs
+│	│	│	│
+│	│	│	Data
+│	│	│	│	Repository.cs
+│	│	│	│
+│	│	│	Services
+│	│	│	│	InterfaceSaveType.cs
+│	│	│	│	WriteLogs.cs
+│	│	│	│	WriteStates.cs
+│	│	│	│
+│	│	│	└───Strategies
+│	│	│	│	│	ExecuteAllTheSave.cs
+│	│	│	│	│	ExecuteOneSave.cs
+│	│	│	│	│	ExecuteSaveOnCreation.cs
+│	│	│	│	│	ServiceDB.cs
+└───└───└───└───└────────────────────────────────     
 
 ```
 ## Configuration files location
