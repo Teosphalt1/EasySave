@@ -83,11 +83,21 @@ namespace GUIProject.core.Services.Strategies
                                         int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
                                         if (compareDateTime > 0)
                                         {
+                                            if (newPath.Contains(".mp4"))
+                                            {
+                                                EncryptFile encrypt = new EncryptFile();
+                                                encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                            }
                                             File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                         }
                                     }
                                     else
                                     {
+                                        if (newPath.Contains(".mp4"))
+                                        {
+                                            EncryptFile encrypt = new EncryptFile();
+                                            encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                        }
                                         File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                     }
                                     stopWatch.Stop();

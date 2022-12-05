@@ -16,7 +16,7 @@ namespace GUIProject
         /// will gather the informations to fill logs.json
         /// will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string blockIfRunning)
+        public async void ExecuteSave(string blockIfRunning)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -73,11 +73,21 @@ namespace GUIProject
                                     int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
                                     if (compareDateTime > 0)
                                     {
+                                        if (newPath.Contains(".mp4"))
+                                        {
+                                            EncryptFile encrypt = new EncryptFile();
+                                            encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                        }
                                         File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                     }
                                 }
                                 else
                                 {
+                                    if(newPath.Contains(".mp4"))
+                                    {
+                                        EncryptFile encrypt = new EncryptFile();
+                                        await encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath)); 
+                                    }
                                     File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                 }
                                 stopWatch.Stop();
