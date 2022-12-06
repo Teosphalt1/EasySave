@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,10 +22,24 @@ namespace GuiProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        
         public MainWindow()
         {
-            InitializeComponent();
+            if (mutex.WaitOne(TimeSpan.Zero, true))
+            {
+                mutex.ReleaseMutex();
+                InitializeComponent();
+            }
+            else
+            {
+                MessageBox.Show("only one instance at a time");
+                Application.Current.Shutdown();
+            }
+            
         }
+        static Mutex mutex = new Mutex(true, "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}");
+        [STAThread]
 
         private void LanguageSelection_Click(object sender, RoutedEventArgs e)
         {
@@ -33,7 +48,6 @@ namespace GuiProject
             switch(lang)
             {
                 case "French":
-                    //MessageBox.Show("Français");
                     LangHelper.ChangeLanguage("fr");
                     Content = new FunctionalPage();
                     break;

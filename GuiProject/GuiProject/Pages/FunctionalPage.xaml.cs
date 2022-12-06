@@ -20,6 +20,9 @@ using System.Xml.Linq;
 using GUIProject;
 using GUIProject.core.Services.Strategies;
 using Newtonsoft.Json;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace GuiProject.Pages
 {
@@ -49,11 +52,12 @@ namespace GuiProject.Pages
             destination.Text = LangHelper.GetString("Destination");
             blockingSoftware.Text = LangHelper.GetString("Blocking software");
         }
-
+        public IList<Thread> threadList = new List<Thread>();
+        public static bool pause = false;
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
             string menuType = ((Button)sender).Tag.ToString();
-
+            
             switch(menuType)
             {
                 case "DisplaySaveWorks":
@@ -117,7 +121,7 @@ namespace GuiProject.Pages
                     break;
                 case "ExecuteSaveWorks":
                     string blockIfRunningAll = BlockIfRunning.Text;
-                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll);
+                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList);
                     MessageBox.Show($"{LangHelper.GetString("Save done")}");
                     break;
                 case "ExecuteOneSaveWork":
@@ -143,9 +147,71 @@ namespace GuiProject.Pages
                         }
                     }
                     break;
+                //case "PauseSaveWorks":
+                //    //MessageBox.Show(pause.ToString() );
+                //    Thread t1 = new Thread(() => myPause(pause, threadList));
+                //    if (pause == false)
+                //    {
+
+                //        pause = true;
+                //        t1.Start();
+                //        //MessageBox.Show(pause.ToString());
+                //    }
+                //    else if(pause == true)
+                //    {
+                //        pause = false;
+                //        t1.Start();
+                //        //MessageBox.Show(pause.ToString());
+                //    }
+                //    else
+                //    {
+                //        break;
+                //    }
+                //    break;
+                case "StopSaveWorks":
+                    if (threadList != null)
+                    {
+                        foreach (Thread thread in threadList)
+                        {
+                            thread.Interrupt();
+                        }
+                    }
+                    threadList.Clear();
+                    break;
+                case "StartSaveWorks":
+                    //pause = false;
+                    //Thread t2 = new Thread(() => myPause(pause));
+                    //t1.Abort();
+                    break;
                 default:
                     break;
             }
         }
+
+        //public void myPause(bool pause, IList<Thread> threadlist)
+        //{
+        //    //while (pause == true)
+        //    //{
+        //    //
+        //    //MessageBox.Show(threadlist.ToString());
+        //    while (pause == true)
+        //    {
+        //        if(threadlist != null)
+        //        {
+        //            foreach (Thread thread in threadlist)
+        //            {
+        //                thread.Interrupt();
+        //            }
+        //        }
+        //        threadlist.Clear();
+        //    }
+        //    foreach (Thread thread in threadlist)
+        //    {
+        //        //thread.
+        //        thread.Interrupt();
+        //    }
+
+
+        //}
     }
 }
