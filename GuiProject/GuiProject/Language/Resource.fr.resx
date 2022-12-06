@@ -159,6 +159,9 @@
   <data name="Field missing" xml:space="preserve">
     <value>Il manque au moins un champ</value>
   </data>
+  <data name="File extension to encrypt" xml:space="preserve">
+    <value>Extension de fichier à crypter</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
   </data>

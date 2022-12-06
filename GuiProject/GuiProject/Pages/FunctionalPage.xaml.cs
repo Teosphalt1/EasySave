@@ -48,6 +48,7 @@ namespace GuiProject.Pages
             differential.Content = LangHelper.GetString("Differential");
             destination.Text = LangHelper.GetString("Destination");
             blockingSoftware.Text = LangHelper.GetString("Blocking software");
+            fileExtensionToEncrypt.Text = LangHelper.GetString("File extension to encrypt");
         }
 
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
