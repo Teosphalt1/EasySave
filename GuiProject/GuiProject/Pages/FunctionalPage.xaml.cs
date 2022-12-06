@@ -20,6 +20,9 @@ using System.Xml.Linq;
 using GUIProject;
 using GUIProject.core.Services.Strategies;
 using Newtonsoft.Json;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace GuiProject.Pages
 {
@@ -50,11 +53,11 @@ namespace GuiProject.Pages
             blockingSoftware.Text = LangHelper.GetString("Blocking software");
             fileExtensionToEncrypt.Text = LangHelper.GetString("File extension to encrypt");
         }
-
+        public IList<Thread> threadList = new List<Thread>();
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
             string menuType = ((Button)sender).Tag.ToString();
-
+            
             switch(menuType)
             {
                 case "DisplaySaveWorks":
@@ -118,7 +121,7 @@ namespace GuiProject.Pages
                     break;
                 case "ExecuteSaveWorks":
                     string blockIfRunningAll = BlockIfRunning.Text;
-                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll);
+                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList);
                     MessageBox.Show($"{LangHelper.GetString("Save done")}");
                     break;
                 case "ExecuteOneSaveWork":
@@ -143,6 +146,18 @@ namespace GuiProject.Pages
                             MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
                         }
                     }
+                    break;
+                case "StopSaveWorks":
+                    if (threadList != null)
+                    {
+                        foreach (Thread thread in threadList)
+                        {
+                            thread.Interrupt();
+                        }
+                    }
+                    threadList.Clear();
+                    break;
+                case "StartSaveWorks":
                     break;
                 default:
                     break;
