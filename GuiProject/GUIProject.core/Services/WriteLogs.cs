@@ -18,11 +18,11 @@ namespace GUIProject
         /// <param name="newPath"></param>
         /// <param name="destPath"></param>
         /// <param name="ts"></param>
-        public static void WriteLogsOnJson(string Name, string newPath, string destPath, TimeSpan ts)
+        public static void WriteLogsOnJson(string Name, string newPath, string destPath, TimeSpan ts, TimeSpan cryptTime)
         {
 
             string elapsedTime = ts.ToString();
-
+            string cryptTimeString = cryptTime.ToString();
             string fileName = @"c:\logs.json";
 
             if (System.IO.File.Exists(fileName))
@@ -46,15 +46,16 @@ namespace GUIProject
 
                 logs.size = (int)length;
                 logs.time = DateTime.Now.ToString();
+                logs.cryptTime = cryptTimeString;
                 myPosts.Add(logs);
                 string json = System.Text.Json.JsonSerializer.Serialize(myPosts, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(fileName, json);
             }
         }
-        public static void WriteLogsOnXML(string Name, string newPath, string destPath, TimeSpan ts)
+        public static void WriteLogsOnXML(string Name, string newPath, string destPath, TimeSpan ts, TimeSpan cryptTime)
         {
             string elapsedTime = ts.ToString();
-
+            string cryptTimeString = cryptTime.ToString();
             string fileName = @"c:\logs.xml";
 
             if (File.Exists(fileName))
@@ -79,6 +80,7 @@ namespace GUIProject
                 XmlNode Time = xdoc.CreateElement("time");
                 XmlNode Size = xdoc.CreateElement("size");
                 XmlNode transferTime = xdoc.CreateElement("transferTime");
+                XmlNode timeForCrypt = xdoc.CreateElement("cryptTime");
 
 
                 name.InnerText = Name;
@@ -87,7 +89,7 @@ namespace GUIProject
                 Time.InnerText = ts.ToString();
                 Size.InnerText = length.ToString();
                 transferTime.InnerText = elapsedTime;
-
+                timeForCrypt.InnerText = cryptTimeString;
 
 
 
@@ -97,6 +99,7 @@ namespace GUIProject
                 save.AppendChild(Time);
                 save.AppendChild(Size);
                 save.AppendChild(transferTime);
+                save.AppendChild(timeForCrypt);
 
 
                 xdoc.DocumentElement.AppendChild(save);

@@ -64,6 +64,9 @@ namespace GUIProject.core.Services.Strategies
                                     Stopwatch stopWatch = new Stopwatch();
                                     stopWatch.Start();
 
+                                    Stopwatch cryptTimeWatch = new Stopwatch();
+                                    TimeSpan cryptTime = new TimeSpan(0);
+
                                     string myPath = Path.GetDirectoryName(newPath);
                                     i += 1;
                                     if (i < totalFiles + 1)
@@ -85,8 +88,15 @@ namespace GUIProject.core.Services.Strategies
                                         {
                                             if (newPath.Contains(".mp4"))
                                             {
+                                                cryptTimeWatch.Start();
                                                 EncryptFile encrypt = new EncryptFile();
                                                 encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                                cryptTimeWatch.Stop();
+                                                cryptTime = cryptTimeWatch.Elapsed;
+                                            }
+                                            else
+                                            {
+                                                cryptTime = new TimeSpan(0);
                                             }
                                             File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                         }
@@ -95,15 +105,23 @@ namespace GUIProject.core.Services.Strategies
                                     {
                                         if (newPath.Contains(".mp4"))
                                         {
+
+                                            cryptTimeWatch.Start();
                                             EncryptFile encrypt = new EncryptFile();
                                             encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                            cryptTimeWatch.Stop();
+                                            cryptTime = cryptTimeWatch.Elapsed;
+                                        }
+                                        else
+                                        {
+                                            cryptTime = new TimeSpan(0);
                                         }
                                         File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                     }
                                     stopWatch.Stop();
                                     ts = stopWatch.Elapsed;
-                                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
+                                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
                                     WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
                                         
                                 }
@@ -111,19 +129,21 @@ namespace GUIProject.core.Services.Strategies
                             catch
                             {
                                 ts = new TimeSpan(-1);
+                                TimeSpan cryptTime = new TimeSpan(-1);
                                 string newPath = "error";
                                 Console.WriteLine("Error cant find source of " + post.Name);
-                                WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                                WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
+                                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
                             }
                         }
                         catch
                         {
                             ts = new TimeSpan(-1);
+                            TimeSpan cryptTime = new TimeSpan(-1);
                             string newPath = "error";
                             Console.WriteLine("Error cant find source of " + post.Name);
-                            WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                            WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                            WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
+                            WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
                         }
                     }
 

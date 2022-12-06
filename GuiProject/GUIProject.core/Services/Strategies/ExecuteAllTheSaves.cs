@@ -57,6 +57,7 @@ namespace GUIProject
                     int totalFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories).Length;
                     long dirSize = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
                     long totalSize = dirSize;
+                    
                     foreach (string newPath in Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories))
                     {
                         Thread.Sleep(5000);
@@ -67,6 +68,9 @@ namespace GUIProject
 
                         Stopwatch stopWatch = new Stopwatch();
                         stopWatch.Start();
+
+                        Stopwatch cryptTimeWatch = new Stopwatch();
+                        TimeSpan cryptTime = new TimeSpan(0);
 
                         string myPath = Path.GetDirectoryName(newPath);
                         i += 1;
@@ -87,8 +91,15 @@ namespace GUIProject
                             {
                                 if (newPath.Contains(".mp4"))
                                 {
+                                    cryptTimeWatch.Start();
                                     EncryptFile encrypt = new EncryptFile();
                                     encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                    cryptTimeWatch.Stop();
+                                    cryptTime = cryptTimeWatch.Elapsed;
+                                }
+                                else
+                                {
+                                    cryptTime = new TimeSpan(0);
                                 }
                                 File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                             }
@@ -97,32 +108,42 @@ namespace GUIProject
                         {
                             if (newPath.Contains(".mp4"))
                             {
+                                
+                                cryptTimeWatch.Start();
                                 EncryptFile encrypt = new EncryptFile();
                                 encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                cryptTimeWatch.Stop();
+                                cryptTime = cryptTimeWatch.Elapsed;
+                            }
+                            else
+                            {
+                                cryptTime = new TimeSpan(0);
                             }
                             File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                         }
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
-                        WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
+                        WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
                         WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
-                        WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                        WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
                     }
                 }
                 catch
                 {
                     ts = new TimeSpan(-1);
+                    TimeSpan cryptTime = new TimeSpan(-1);
                     string newPath = "error";
-                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
+                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
                 }
             }
             catch
             {
                 ts = new TimeSpan(-1);
+                TimeSpan cryptTime = new TimeSpan(-1);
                 string newPath = "error";
-                WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts);
-                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts);
+                WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
+                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
             }
         }
     }

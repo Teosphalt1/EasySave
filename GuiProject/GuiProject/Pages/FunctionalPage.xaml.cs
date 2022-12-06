@@ -53,7 +53,6 @@ namespace GuiProject.Pages
             blockingSoftware.Text = LangHelper.GetString("Blocking software");
         }
         public IList<Thread> threadList = new List<Thread>();
-        public static bool pause = false;
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
             string menuType = ((Button)sender).Tag.ToString();
@@ -147,27 +146,6 @@ namespace GuiProject.Pages
                         }
                     }
                     break;
-                //case "PauseSaveWorks":
-                //    //MessageBox.Show(pause.ToString() );
-                //    Thread t1 = new Thread(() => myPause(pause, threadList));
-                //    if (pause == false)
-                //    {
-
-                //        pause = true;
-                //        t1.Start();
-                //        //MessageBox.Show(pause.ToString());
-                //    }
-                //    else if(pause == true)
-                //    {
-                //        pause = false;
-                //        t1.Start();
-                //        //MessageBox.Show(pause.ToString());
-                //    }
-                //    else
-                //    {
-                //        break;
-                //    }
-                //    break;
                 case "StopSaveWorks":
                     if (threadList != null)
                     {
@@ -179,39 +157,10 @@ namespace GuiProject.Pages
                     threadList.Clear();
                     break;
                 case "StartSaveWorks":
-                    //pause = false;
-                    //Thread t2 = new Thread(() => myPause(pause));
-                    //t1.Abort();
                     break;
                 default:
                     break;
             }
         }
-
-        //public void myPause(bool pause, IList<Thread> threadlist)
-        //{
-        //    //while (pause == true)
-        //    //{
-        //    //
-        //    //MessageBox.Show(threadlist.ToString());
-        //    while (pause == true)
-        //    {
-        //        if(threadlist != null)
-        //        {
-        //            foreach (Thread thread in threadlist)
-        //            {
-        //                thread.Interrupt();
-        //            }
-        //        }
-        //        threadlist.Clear();
-        //    }
-        //    foreach (Thread thread in threadlist)
-        //    {
-        //        //thread.
-        //        thread.Interrupt();
-        //    }
-
-
-        //}
     }
 }

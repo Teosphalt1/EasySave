@@ -17,5 +17,6 @@ namespace GUIProject
         public string time { get; set; }
         public int size { get; set; }
         public string transferTime { get; set; }
+        public string cryptTime { get; set; }
     }
 }
