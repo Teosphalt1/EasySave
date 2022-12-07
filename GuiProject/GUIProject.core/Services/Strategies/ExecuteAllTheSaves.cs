@@ -22,7 +22,6 @@ namespace GUIProject
             if (System.IO.File.Exists(fileName))
             {
                 string justText = File.ReadAllText(fileName);
-                //var myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
                 SaveWork[] myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
                 TimeSpan ts = new TimeSpan(0);
                 string state = "Active";
