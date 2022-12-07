@@ -121,12 +121,22 @@ namespace GuiProject.Pages
                     break;
                 case "ExecuteSaveWorks":
                     string blockIfRunningAll = BlockIfRunning.Text;
-                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList);
+                    string cryptFilesAll;
+                    if (CryptFiles.SelectedIndex.ToString() == "1")
+                    {
+                        cryptFilesAll = ".mp4";
+                    }
+                    else
+                    {
+                        cryptFilesAll = "NothingToCrypt";
+                    }
+                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList, cryptFilesAll);
                     MessageBox.Show($"{LangHelper.GetString("Save done")}");
                     break;
                 case "ExecuteOneSaveWork":
                     string blockIfRunningOne = BlockIfRunning.Text;
                     string myId = saveWorkToExecuteId.Text;
+                    string cryptFilesOne;
                     if(myId == "")
                     {
                         MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
@@ -138,7 +148,15 @@ namespace GuiProject.Pages
                         serviced.GenerateSaveWork();
                         if (intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
                         {
-                            new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne);
+                            if (CryptFiles.SelectedIndex.ToString() == "1")
+                            {
+                                cryptFilesOne = ".mp4";
+                            }
+                            else
+                            {
+                                cryptFilesOne = "NothingToCrypt";
+                            }
+                            new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne, threadList, cryptFilesOne);
                             MessageBox.Show($"{LangHelper.GetString("Save done")}");
                         }
                         else
@@ -156,8 +174,6 @@ namespace GuiProject.Pages
                         }
                     }
                     threadList.Clear();
-                    break;
-                case "StartSaveWorks":
                     break;
                 default:
                     break;

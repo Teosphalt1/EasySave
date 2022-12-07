@@ -58,7 +58,7 @@
             <!--PLAY, PAUSE, STOP BUTTONS-->
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,45">
                 <!--PLAY-->
-                <Button x:Name="playButton" Tag="StartSaveWorks" Click="LeftMenu_Click" Margin="0,80,0,0">
+                <Button x:Name="playButton" Tag="PlaySaveWorks" Click="LeftMenu_Click" Margin="0,80,0,0">
                     <Image Height="40" Width="40" Source="/Images/play-button.png"/>
                 </Button>
                 <!--PAUSE-->
@@ -73,7 +73,11 @@
 
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,20,55">
                 <TextBlock x:Name="fileExtensionToEncrypt" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text="" Margin="0,0,5,0"/>
-                <TextBox x:Name="CryptFiles" TextWrapping="Wrap"  Width="50" Height="18"/>
+                <ComboBox x:Name="CryptFiles" Width="auto" Height="22"  SelectedIndex="0">
+                    <ComboBoxItem x:Name="None" Content="None"></ComboBoxItem>
+                    <ComboBoxItem x:Name="mp4" Content=".mp4"></ComboBoxItem>
+                </ComboBox>
+                <!--<TextBox x:Name="CryptFiles" TextWrapping="Wrap"  Width="50" Height="18"/>-->
             </StackPanel>
             
             

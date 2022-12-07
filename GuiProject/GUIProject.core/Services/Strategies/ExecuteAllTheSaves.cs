@@ -16,7 +16,7 @@ namespace GUIProject
         /// will gather the informations to fill logs.json
         /// will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string blockIfRunning, IList<Thread> threadlist)
+        public void ExecuteSave(string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -29,7 +29,7 @@ namespace GUIProject
                 int myThread = 1;
                 foreach (SaveWork post in myPosts)
                 {
-                    Thread t = new Thread(()=>DoWork(blockIfRunning, post, state, ts));
+                    Thread t = new Thread(()=>DoWork(blockIfRunning, post, state, ts, extensionToCrypt));
                     t.Start();
                     Thread.Sleep(3000);
                     threadlist.Add(t);
@@ -37,12 +37,9 @@ namespace GUIProject
             }
         }
 
-        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts)
+        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt)
         {
-            while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
-            {
-                Thread.Sleep(10);
-            }
+            
             try
             {
                 foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
@@ -57,10 +54,23 @@ namespace GUIProject
                     int totalFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories).Length;
                     long dirSize = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
                     long totalSize = dirSize;
-                    
-                    foreach (string newPath in Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories))
+                    string[] MyFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories);
+                    foreach (string file in MyFiles)
                     {
-                        Thread.Sleep(5000);
+                        if (file.Contains(".txt"))
+                        {
+                            MyFiles = MyFiles.Where(o => o != file).ToArray();
+                            MyFiles = MyFiles.Prepend(file).ToArray();
+                        }
+                    }
+
+                    foreach(string newPath in MyFiles)
+                    {
+                        while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
+                        {
+                            Thread.Sleep(10);
+                        }
+                        Thread.Sleep(3000);
                         long actualFileSize = new System.IO.FileInfo(newPath).Length;
                         long sizeleft = dirSize - actualFileSize;
                         dirSize -= actualFileSize;
@@ -89,7 +99,7 @@ namespace GUIProject
                             int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
                             if (compareDateTime > 0)
                             {
-                                if (newPath.Contains(".mp4"))
+                                if (newPath.Contains(extensionToCrypt))
                                 {
                                     cryptTimeWatch.Start();
                                     EncryptFile encrypt = new EncryptFile();
@@ -106,7 +116,7 @@ namespace GUIProject
                         }
                         else
                         {
-                            if (newPath.Contains(".mp4"))
+                            if (newPath.Contains(extensionToCrypt))
                             {
                                 
                                 cryptTimeWatch.Start();

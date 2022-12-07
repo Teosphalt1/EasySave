@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,134 +20,150 @@ namespace GUIProject.core.Services.Strategies
         /// Will gather the informations to fill logs.json
         /// Will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string myId, string blockIfRunning)
+        public void ExecuteSave(string myId, string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
             {
                 string justText = File.ReadAllText(fileName);
-                var myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
+                SaveWork[] myPosts = JsonConvert.DeserializeObject<SaveWork[]>(justText);
                 TimeSpan ts = new TimeSpan(0);
 
                 int myIdint = Int32.Parse(myId);
 
                 string state = "Active";
 
-                foreach (var post in myPosts)
+                foreach (SaveWork post in myPosts)
                 {
-                    while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
+                    Thread t = new Thread(() => DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint));
+                    t.Start();
+                    threadlist.Add(t);
+                }    
+            }
+        }
+
+        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, int myIdint)
+        {
+            if (post.id == myIdint)
+            {
+                try
+                {
+                    foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
                     {
-                        Thread.Sleep(10);
+                        Directory.CreateDirectory(dirPath.Replace(post.FileSource, post.destPath));
+                        int fCount = Directory.GetFiles(dirPath, "*", SearchOption.AllDirectories).Length;
                     }
-                    if (post.id == myIdint)
+                    try
                     {
-                        try
+                        DirectoryInfo dirInfo = new DirectoryInfo(post.FileSource);
+                        int i = 1;
+                        int totalFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories).Length;
+                        long dirSize = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+                        long totalSize = dirSize;
+                        string[] MyFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories);
+                        foreach (string file in MyFiles)
                         {
-                            foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
+                            if (file.Contains(".txt"))
                             {
-                                Directory.CreateDirectory(dirPath.Replace(post.FileSource, post.destPath));
-                                int fCount = Directory.GetFiles(dirPath, "*", SearchOption.AllDirectories).Length;
+                                MyFiles = MyFiles.Where(o => o != file).ToArray();
+                                MyFiles = MyFiles.Prepend(file).ToArray();
                             }
-                            try
+                        }
+                        foreach (string newPath in MyFiles)
+                        {
+                            while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
                             {
-                                DirectoryInfo dirInfo = new DirectoryInfo(post.FileSource);
-                                int i = 1;
-                                int totalFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories).Length;
-                                long dirSize = dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
-                                long totalSize = dirSize;
-                                foreach (string newPath in Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories))
+                                Thread.Sleep(10);
+                            }
+                            Thread.Sleep(1000);
+                            long actualFileSize = new System.IO.FileInfo(newPath).Length;
+                            long sizeleft = dirSize - actualFileSize;
+                            dirSize -= actualFileSize;
+                            int filesLeft = totalFiles - i;
+
+                            Stopwatch stopWatch = new Stopwatch();
+                            stopWatch.Start();
+
+                            Stopwatch cryptTimeWatch = new Stopwatch();
+                            TimeSpan cryptTime = new TimeSpan(0);
+
+                            string myPath = Path.GetDirectoryName(newPath);
+                            i += 1;
+                            if (i < totalFiles + 1)
+                            {
+                                state = "Active";
+
+                            }
+                            else
+                            {
+                                state = "Ended";
+                            }
+
+                            if (post.type == "differential")
+                            {
+                                DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
+                                DateTime Test = Convert.ToDateTime(post.time);
+                                int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
+                                if (compareDateTime > 0)
                                 {
-                                    long actualFileSize = new System.IO.FileInfo(newPath).Length;
-                                    long sizeleft = dirSize - actualFileSize;
-                                    dirSize -= actualFileSize;
-                                    int filesLeft = totalFiles - i;
-
-                                    Stopwatch stopWatch = new Stopwatch();
-                                    stopWatch.Start();
-
-                                    Stopwatch cryptTimeWatch = new Stopwatch();
-                                    TimeSpan cryptTime = new TimeSpan(0);
-
-                                    string myPath = Path.GetDirectoryName(newPath);
-                                    i += 1;
-                                    if (i < totalFiles + 1)
+                                    if (newPath.Contains(extensionToCrypt))
                                     {
-                                        state = "Active";
-
+                                        cryptTimeWatch.Start();
+                                        EncryptFile encrypt = new EncryptFile();
+                                        encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                        cryptTimeWatch.Stop();
+                                        cryptTime = cryptTimeWatch.Elapsed;
                                     }
                                     else
                                     {
-                                        state = "Ended";
+                                        cryptTime = new TimeSpan(0);
                                     }
-
-                                    if (post.type == "differential")
-                                    {
-                                        DateTime lastModifiedTime = File.GetLastWriteTime(newPath);
-                                        DateTime Test = Convert.ToDateTime(post.time);
-                                        int compareDateTime = DateTime.Compare(lastModifiedTime, Test);
-                                        if (compareDateTime > 0)
-                                        {
-                                            if (newPath.Contains(".mp4"))
-                                            {
-                                                cryptTimeWatch.Start();
-                                                EncryptFile encrypt = new EncryptFile();
-                                                encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
-                                                cryptTimeWatch.Stop();
-                                                cryptTime = cryptTimeWatch.Elapsed;
-                                            }
-                                            else
-                                            {
-                                                cryptTime = new TimeSpan(0);
-                                            }
-                                            File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (newPath.Contains(".mp4"))
-                                        {
-
-                                            cryptTimeWatch.Start();
-                                            EncryptFile encrypt = new EncryptFile();
-                                            encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
-                                            cryptTimeWatch.Stop();
-                                            cryptTime = cryptTimeWatch.Elapsed;
-                                        }
-                                        else
-                                        {
-                                            cryptTime = new TimeSpan(0);
-                                        }
-                                        File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
-                                    }
-                                    stopWatch.Stop();
-                                    ts = stopWatch.Elapsed;
-                                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
-                                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
-                                    WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
-                                        
+                                    File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                                 }
                             }
-                            catch
+                            else
                             {
-                                ts = new TimeSpan(-1);
-                                TimeSpan cryptTime = new TimeSpan(-1);
-                                string newPath = "error";
-                                Console.WriteLine("Error cant find source of " + post.Name);
-                                WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
-                                WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
+                                if (newPath.Contains(extensionToCrypt))
+                                {
+
+                                    cryptTimeWatch.Start();
+                                    EncryptFile encrypt = new EncryptFile();
+                                    encrypt.launchEncrypt(newPath, newPath.Replace(post.FileSource, post.destPath));
+                                    cryptTimeWatch.Stop();
+                                    cryptTime = cryptTimeWatch.Elapsed;
+                                }
+                                else
+                                {
+                                    cryptTime = new TimeSpan(0);
+                                }
+                                File.Copy(newPath, newPath.Replace(post.FileSource, post.destPath), true);
                             }
-                        }
-                        catch
-                        {
-                            ts = new TimeSpan(-1);
-                            TimeSpan cryptTime = new TimeSpan(-1);
-                            string newPath = "error";
-                            Console.WriteLine("Error cant find source of " + post.Name);
+                            stopWatch.Stop();
+                            ts = stopWatch.Elapsed;
                             WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
                             WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
+                            WriteStates.WriteStatesOnJson(post.Name, newPath, post.destPath, totalFiles, totalSize, dirSize, filesLeft, state);
+
                         }
                     }
-
+                    catch
+                    {
+                        ts = new TimeSpan(-1);
+                        TimeSpan cryptTime = new TimeSpan(-1);
+                        string newPath = "error";
+                        Console.WriteLine("Error cant find source of " + post.Name);
+                        WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
+                        WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
+                    }
+                }
+                catch
+                {
+                    ts = new TimeSpan(-1);
+                    TimeSpan cryptTime = new TimeSpan(-1);
+                    string newPath = "error";
+                    Console.WriteLine("Error cant find source of " + post.Name);
+                    WriteLogs.WriteLogsOnJson(post.Name, newPath, post.destPath, ts, cryptTime);
+                    WriteLogs.WriteLogsOnXML(post.Name, newPath, post.destPath, ts, cryptTime);
                 }
             }
         }
