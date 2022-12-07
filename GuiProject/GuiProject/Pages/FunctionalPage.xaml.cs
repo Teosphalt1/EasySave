@@ -131,7 +131,7 @@ namespace GuiProject.Pages
                         cryptFilesAll = "NothingToCrypt";
                     }
                     new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList, cryptFilesAll);
-                    MessageBox.Show($"{LangHelper.GetString("Save done")}");
+                    MessageBox.Show($"{LangHelper.GetString("Saves work launched")}");
                     break;
                 case "ExecuteOneSaveWork":
                     string blockIfRunningOne = BlockIfRunning.Text;
@@ -157,7 +157,7 @@ namespace GuiProject.Pages
                                 cryptFilesOne = "NothingToCrypt";
                             }
                             new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne, threadList, cryptFilesOne);
-                            MessageBox.Show($"{LangHelper.GetString("Save done")}");
+                            MessageBox.Show($"{LangHelper.GetString("Save work launched")}");
                         }
                         else
                         {

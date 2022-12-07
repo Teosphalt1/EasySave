@@ -177,6 +177,12 @@
   <data name="Save work added" xml:space="preserve">
     <value>Save work added</value>
   </data>
+  <data name="Save work launched" xml:space="preserve">
+    <value>Save work launched</value>
+  </data>
+  <data name="Saves work launched" xml:space="preserve">
+    <value>Save work launched</value>
+  </data>
   <data name="Source" xml:space="preserve">
     <value>Source</value>
   </data>

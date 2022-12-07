@@ -177,6 +177,12 @@
   <data name="Save work added" xml:space="preserve">
     <value>Travail de sauvegarde ajotué</value>
   </data>
+  <data name="Save work launched" xml:space="preserve">
+    <value>Travail de sauvegarde lancé</value>
+  </data>
+  <data name="Saves work launched" xml:space="preserve">
+    <value>Travaux de sauvegarde lancés</value>
+  </data>
   <data name="Source" xml:space="preserve">
     <value>Source</value>
   </data>
