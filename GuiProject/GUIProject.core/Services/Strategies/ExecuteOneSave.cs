@@ -20,7 +20,7 @@ namespace GUIProject.core.Services.Strategies
         /// Will gather the informations to fill logs.json
         /// Will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string myId, string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt)
+        public void ExecuteSave(string myId, string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -35,14 +35,19 @@ namespace GUIProject.core.Services.Strategies
 
                 foreach (SaveWork post in myPosts)
                 {
-                    Thread t = new Thread(() => DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint));
+                    Thread t = new Thread(/*() => DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint)*/
+                        ()=>
+                        {
+                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint, manualResetEvent);
+                        }
+                        );
                     t.Start();
                     threadlist.Add(t);
                 }    
             }
         }
 
-        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, int myIdint)
+        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, int myIdint, ManualResetEvent manualResetEvent)
         {
             if (post.id == myIdint)
             {
@@ -71,6 +76,7 @@ namespace GUIProject.core.Services.Strategies
                         }
                         foreach (string newPath in MyFiles)
                         {
+                            manualResetEvent.WaitOne(Timeout.Infinite);
                             while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
                             {
                                 Thread.Sleep(10);

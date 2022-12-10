@@ -160,7 +160,7 @@ namespace GuiProject.Pages
                             {
                                 cryptFilesOne = "NothingToCrypt";
                             }
-                            new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne, threadList, cryptFilesOne);
+                            new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne, threadList, cryptFilesOne, manualResetEvent);
                             MessageBox.Show($"{LangHelper.GetString("Save work launched")}");
                         }
                         else
@@ -179,7 +179,6 @@ namespace GuiProject.Pages
                     }
                     threadList.Clear();
                     break;
-
                 case "PauseSaveWorks":
                     pauseButton.Background = Brushes.Green;
                     manualResetEvent.Reset();
