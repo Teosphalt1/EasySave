@@ -162,6 +162,9 @@
   <data name="File extension to encrypt" xml:space="preserve">
     <value>File extension to encrypt</value>
   </data>
+  <data name="File extension to prioritize" xml:space="preserve">
+    <value>File extension to prioritize</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
   </data>

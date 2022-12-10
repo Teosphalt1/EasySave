@@ -56,9 +56,16 @@ namespace GuiProject.Pages
             destination.Text = LangHelper.GetString("Destination");
             blockingSoftware.Text = LangHelper.GetString("Blocking software");
             fileExtensionToEncrypt.Text = LangHelper.GetString("File extension to encrypt");
+            fileExtensionToPrioritize.Text = LangHelper.GetString("File extension to prioritize");
+
         }
+<<<<<<< HEAD
         
         public void LeftMenu_Click(object sender, RoutedEventArgs e)
+=======
+
+        private void LeftMenu_Click(object sender, RoutedEventArgs e)
+>>>>>>> 170275a97a9611a66bd6433a9d03366bab8543c9
         {
             string menuType = ((Button)sender).Tag.ToString();
             

