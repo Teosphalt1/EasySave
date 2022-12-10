@@ -35,7 +35,7 @@ namespace GUIProject.core.Services.Strategies
 
                 foreach (SaveWork post in myPosts)
                 {
-                    Thread t = new Thread(/*() => DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint)*/
+                    Thread t = new Thread(
                         ()=>
                         {
                             DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint, manualResetEvent);

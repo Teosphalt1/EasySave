@@ -32,7 +32,7 @@ namespace GUIProject
                 Logs logs = new Logs();
                 logs.Name = Name;
                 logs.FileSource = newPath;
-                logs.destPath = destPath + @"\" + Path.GetFileName(newPath);
+                logs.destPath = $@"{destPath}\{Path.GetFileName(newPath)}";
                 logs.transferTime = elapsedTime;
                 long length;
                 try
@@ -85,7 +85,7 @@ namespace GUIProject
 
                 name.InnerText = Name;
                 FileSource.InnerText = newPath;
-                DestPath.InnerText = destPath + @"\" + Path.GetFileName(newPath);
+                DestPath.InnerText = $@"{destPath}\{Path.GetFileName(newPath)}";
                 Time.InnerText = ts.ToString();
                 Size.InnerText = length.ToString();
                 transferTime.InnerText = elapsedTime;

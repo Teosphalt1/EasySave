@@ -52,7 +52,6 @@ namespace GuiProject
                     Content = new FunctionalPage();
                     break;
                 case "English":
-                    //MessageBox.Show("English");
                     LangHelper.ChangeLanguage("");
                     Content = new FunctionalPage();
                     break;

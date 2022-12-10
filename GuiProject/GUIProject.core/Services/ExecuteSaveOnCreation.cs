@@ -37,12 +37,13 @@ namespace GUIProject
                             }
                             catch
                             {
-                                Console.WriteLine("Error cant find source of " + post.Name);
+                                Console.WriteLine($"Error can't find source of {post.Name}");
+                                //Console.WriteLine("Error cant find source of " + post.Name);
                             }
                         }
                         catch
                         {
-                            Console.WriteLine("Error cant find source of " + post.Name);
+                            Console.WriteLine($"Error can't find source of {post.Name}");
                         }
                     }
                 }
