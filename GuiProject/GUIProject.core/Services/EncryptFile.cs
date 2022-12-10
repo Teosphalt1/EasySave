@@ -12,7 +12,8 @@ namespace GUIProject
         public async Task launchEncrypt(string FileToEncrypt, string Destination)
         {
             Process process = new Process();
-            process.StartInfo.FileName = @"C:\Users\teosp\OneDrive\Bureau\A3\Projet.NET\Prosit5\XorTest\XorTest\bin\Debug\net6.0\XorTest.exe";
+            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            process.StartInfo.FileName = Path.Combine(sCurrentDirectory, @"..\..\..\..\..\CryptoSoft\bin\Debug\net6.0\CryptoSoft.exe");
             process.StartInfo.ArgumentList.Add(FileToEncrypt);
             process.StartInfo.ArgumentList.Add(Destination);
             process.StartInfo.UseShellExecute = false;

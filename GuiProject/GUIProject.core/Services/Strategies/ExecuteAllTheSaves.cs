@@ -32,10 +32,9 @@ namespace GUIProject
                 int myThread = 1;
                 foreach (SaveWork post in myPosts)
                 {
-                    Thread t = new Thread(/*()=>DoWork(blockIfRunning, post, state, ts, extensionToCrypt)*/
+                    Thread t = new Thread(
                         ()=>
                         {
-                            //manualResetEvent.WaitOne(Timeout.Infinite);
                             DoWork(blockIfRunning, post, state, ts, extensionToCrypt, manualResetEvent);  
                         }
                         );
