@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using GUIProject;
 
 namespace GuiProject.Pages
 {
@@ -31,6 +32,9 @@ namespace GuiProject.Pages
     /// </summary>
     public partial class FunctionalPage : Page
     {
+        public ManualResetEvent manualResetEvent = new ManualResetEvent(true);
+        public IList<Thread> threadList = new List<Thread>();
+        
         public FunctionalPage()
         {
             InitializeComponent();
@@ -53,12 +57,12 @@ namespace GuiProject.Pages
             blockingSoftware.Text = LangHelper.GetString("Blocking software");
             fileExtensionToEncrypt.Text = LangHelper.GetString("File extension to encrypt");
         }
-        public IList<Thread> threadList = new List<Thread>();
+        
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
             string menuType = ((Button)sender).Tag.ToString();
             
-            switch(menuType)
+            switch (menuType)
             {
                 case "DisplaySaveWorks":
                     ServiceDB servicedb = new ServiceDB();
@@ -130,7 +134,7 @@ namespace GuiProject.Pages
                     {
                         cryptFilesAll = "NothingToCrypt";
                     }
-                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList, cryptFilesAll);
+                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList, cryptFilesAll, manualResetEvent);
                     MessageBox.Show($"{LangHelper.GetString("Saves work launched")}");
                     break;
                 case "ExecuteOneSaveWork":
@@ -174,6 +178,17 @@ namespace GuiProject.Pages
                         }
                     }
                     threadList.Clear();
+                    break;
+
+                case "PauseSaveWorks":
+                    pauseButton.Background = Brushes.Green;
+                    manualResetEvent.Reset();
+                    playButton.ClearValue(Button.BackgroundProperty);
+                    break;
+                case "PlaySaveWorks":
+                    playButton.Background = Brushes.Green;
+                    manualResetEvent.Set();
+                    pauseButton.ClearValue(Button.BackgroundProperty);
                     break;
                 default:
                     break;

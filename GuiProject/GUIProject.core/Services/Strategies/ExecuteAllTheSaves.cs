@@ -6,17 +6,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GUIProject;
+using System.Threading;
 
 namespace GUIProject
 {
+    
     public class ExecuteAllTheSaves
     {
+        //public ManualResetEvent _manualResetEvent = new ManualResetEvent(true);
         /// <summary>
         /// Will execute all the different save works registered on bdd.json
         /// will gather the informations to fill logs.json
         /// will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt)
+        public void ExecuteSave(string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -28,7 +32,13 @@ namespace GUIProject
                 int myThread = 1;
                 foreach (SaveWork post in myPosts)
                 {
-                    Thread t = new Thread(()=>DoWork(blockIfRunning, post, state, ts, extensionToCrypt));
+                    Thread t = new Thread(/*()=>DoWork(blockIfRunning, post, state, ts, extensionToCrypt)*/
+                        ()=>
+                        {
+                            //manualResetEvent.WaitOne(Timeout.Infinite);
+                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, manualResetEvent);  
+                        }
+                        );
                     t.Start();
                     Thread.Sleep(3000);
                     threadlist.Add(t);
@@ -36,13 +46,14 @@ namespace GUIProject
             }
         }
 
-        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt)
+        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, ManualResetEvent manualResetEvent)
         {
             
             try
             {
                 foreach (string dirPath in Directory.GetDirectories(post.FileSource, "*", SearchOption.AllDirectories))
                 {
+                    
                     Directory.CreateDirectory(dirPath.Replace(post.FileSource, post.destPath));
                     int fCount = Directory.GetFiles(dirPath, "*", SearchOption.AllDirectories).Length;
                 }
@@ -65,6 +76,7 @@ namespace GUIProject
 
                     foreach(string newPath in MyFiles)
                     {
+                        manualResetEvent.WaitOne(Timeout.Infinite);
                         while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
                         {
                             Thread.Sleep(10);
