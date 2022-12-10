@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,8 +45,8 @@ namespace GuiProject
         private void LanguageSelection_Click(object sender, RoutedEventArgs e)
         {
             string lang = ((Button)sender).Tag.ToString();
-
-            switch(lang)
+            Console_Launch();
+            switch (lang)
             {
                 case "French":
                     LangHelper.ChangeLanguage("fr");
@@ -58,6 +59,92 @@ namespace GuiProject
                 default:
                     throw new NotImplementedException("");
                     break;
+            }
+        }
+
+        static void Console_Launch()
+        {
+            Console.Title = "SERVER";
+
+            IPAddress myIp = IPAddress.Parse("127.0.0.1");
+            int port = 3000;
+
+            Server server = new Server(myIp, port);
+
+
+            //
+            server.startListening();
+            Console.WriteLine("Server started");
+
+            Thread.Sleep(1000);
+            Console.Clear();
+            Console.WriteLine("Waiting for connection");
+
+            //if somebody wants to connect, accept it
+            server.acceptClient();
+            Console.WriteLine("Client connected");
+
+            string messageFromClient = "";
+            string messageToClient = "";
+
+            try
+            {
+                server.clientData();
+
+                
+                while (server.serverStatus)
+                {
+
+                    
+                    if (server.socketForClient.Connected)
+                    {
+                        
+                        messageFromClient = server.streamReader.ReadLine();
+                        
+                        Console.WriteLine($"Client : {messageFromClient}");
+
+                        
+                        if (messageFromClient == "exit")
+                        {
+                            server.serverStatus = false; 
+                            server.streamReader.Close();
+                            server.streamWriter.Close();
+                            server.networkStream.Close();
+                            return;
+                        }
+
+                        else if (messageFromClient == "Connection succesfull")
+                        {
+                            Console.WriteLine("Client connected to server");
+                        }
+
+                        else if (messageFromClient == "Display save work")
+                        {
+                            Console.WriteLine("Display save work to client");
+                        }
+
+                        else if (messageFromClient == "Execute all save work")
+                        {
+                            Console.WriteLine("Execute all save work");
+                        }
+
+                        Console.Write("Server : ");
+                        
+                        messageToClient = Console.ReadLine();
+                        
+                        server.streamWriter.WriteLine(messageToClient);
+
+                        server.streamWriter.Flush();
+                    }
+                }
+
+                
+                Console.WriteLine("Client disconnected");
+                server.disconnect();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }

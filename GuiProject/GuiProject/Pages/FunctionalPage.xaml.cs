@@ -58,7 +58,7 @@ namespace GuiProject.Pages
             fileExtensionToEncrypt.Text = LangHelper.GetString("File extension to encrypt");
         }
         
-        private void LeftMenu_Click(object sender, RoutedEventArgs e)
+        public void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
             string menuType = ((Button)sender).Tag.ToString();
             
