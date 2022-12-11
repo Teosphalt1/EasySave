@@ -159,6 +159,12 @@
   <data name="Execute save work min" xml:space="preserve">
     <value>Execute save work</value>
   </data>
+  <data name="Executing save" xml:space="preserve">
+    <value>Currently executing all save work</value>
+  </data>
+  <data name="Executing save id" xml:space="preserve">
+    <value>Currently executing save work</value>
+  </data>
   <data name="Field missing" xml:space="preserve">
     <value>At least one field is missing</value>
   </data>
@@ -177,6 +183,15 @@
   <data name="Save done" xml:space="preserve">
     <value>Save done</value>
   </data>
+  <data name="Save paused" xml:space="preserve">
+    <value>Save work paused</value>
+  </data>
+  <data name="Save played" xml:space="preserve">
+    <value>Save work restarted</value>
+  </data>
+  <data name="Save stopped" xml:space="preserve">
+    <value>Save work stopped</value>
+  </data>
   <data name="Save type" xml:space="preserve">
     <value>Save type</value>
   </data>
@@ -185,6 +200,15 @@
   </data>
   <data name="Save work launched" xml:space="preserve">
     <value>Save work launched</value>
+  </data>
+  <data name="Saves paused" xml:space="preserve">
+    <value>All save work paused</value>
+  </data>
+  <data name="Saves played" xml:space="preserve">
+    <value>All save work restarted</value>
+  </data>
+  <data name="Saves stopped" xml:space="preserve">
+    <value>All save work stopped</value>
   </data>
   <data name="Saves work launched" xml:space="preserve">
     <value>Save work launched</value>

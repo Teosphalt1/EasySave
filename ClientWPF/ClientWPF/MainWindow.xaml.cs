@@ -18,30 +18,19 @@ using ClientWPF.core;
 
 namespace ClientWPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 10.133.129.169
-    ///Spam message en boucle ->Flush text box ????
-    ///Renvoie message trop rapide
     public partial class MainWindow : Window
     {
         static string myIp = "127.0.0.1";
         static int port = 3000;
         public Client client = new Client(myIp, port);
         public string messageFromServer = "";
-        public string messageToServer = "I'm connected";
+        public string messageToServer = "";
         public MainWindow()
         {
             InitializeComponent();
-            
-
             client.ConnectToServer();
             MessageBox.Show("Connected to server");
-
             Thread.Sleep(1000);
-
-
             client.serverData();
         }
         public void Get_Messages(object sender, RoutedEventArgs e)
@@ -54,40 +43,15 @@ namespace ClientWPF
                     Retour.Text = messageFromServer;
                     messageFromServer = "";
                 }
-                //MessageBox.Show($"{messageFromServer}");
-                //Retour.Text = messageFromServer;
             }
             catch
             {
-                MessageBox.Show($"Pas de nouveau message");
+                MessageBox.Show($"No new message");
             }
         }
-        private void Send_Messages(object sender, RoutedEventArgs e)
+          public void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                messageToServer = Message.Text;
-                client.streamWriter.WriteLine($"{messageToServer}");
-                client.streamWriter.Flush();
-            }
-            catch
-            {
-                MessageBox.Show($"Pas de message à envoyer");
-            }
-
-        }
-        /* A IMPLEMENTER
-            catch
-            {
-                MessageBox.Show("Problem reading from server");
-            }
-            client.disconnect();
-        */
-        public void LeftMenu_Click(object sender, RoutedEventArgs e)
-        {
-
             string menuType = ((Button)sender).Tag.ToString();
-
             switch (menuType)
             {
                 case "PauseSaveWorks":
@@ -107,20 +71,16 @@ namespace ClientWPF
                     break;
             }
         }
-        public void Display(object sender, RoutedEventArgs e) //METTRE A JOUR QUE CA C'EST L'EXECUTION DE TOUTES LES FILES
+        public void Execute_AllSaves(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Execute save work");
+            MessageBox.Show("Execute all save work");
             messageToServer = "Execute_Save";
             client.streamWriter.WriteLine($"{messageToServer}");
             client.streamWriter.Flush();
         }
-        public void ExecuteAll(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("ExecAll");
-        }
         public void ExecuteOne(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ExecuteOne");
+            MessageBox.Show("Execute selected save");
             messageToServer = "Execute_One_Save";
             client.streamWriter.WriteLine($"{messageToServer}");
             client.streamWriter.Flush();

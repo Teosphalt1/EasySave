@@ -177,6 +177,15 @@
   <data name="Save done" xml:space="preserve">
     <value>Sauvegarde effectuée</value>
   </data>
+  <data name="Save paused" xml:space="preserve">
+    <value>Travail de sauvegarde mis en pause</value>
+  </data>
+  <data name="Save played" xml:space="preserve">
+    <value>Travail de sauvegarde relancé</value>
+  </data>
+  <data name="Save stopped" xml:space="preserve">
+    <value>Travail de sauvegarde stoppé</value>
+  </data>
   <data name="Save type" xml:space="preserve">
     <value>Type de sauvegarde</value>
   </data>
@@ -185,6 +194,15 @@
   </data>
   <data name="Save work launched" xml:space="preserve">
     <value>Travail de sauvegarde lancé</value>
+  </data>
+  <data name="Saves paused" xml:space="preserve">
+    <value>Travaux de sauvegarde mis en pause</value>
+  </data>
+  <data name="Saves played" xml:space="preserve">
+    <value>Travaux de sauvegarde relancés</value>
+  </data>
+  <data name="Saves stopped" xml:space="preserve">
+    <value>Travaux de sauvegarde stoppés</value>
   </data>
   <data name="Saves work launched" xml:space="preserve">
     <value>Travaux de sauvegarde lancés</value>

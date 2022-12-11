@@ -194,7 +194,7 @@ namespace GuiProject.Pages
                     manualResetEvent.Set();
                     pauseButton.ClearValue(Button.BackgroundProperty);
                     break;
-                case "Etablish_Connection":
+                case "Establish_Connection":
                     IPAddress myIp = IPAddress.Parse("127.0.0.1");
                     int port = 3000;
                     Server server = new Server(myIp, port);

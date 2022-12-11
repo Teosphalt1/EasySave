@@ -19,9 +19,7 @@
 
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0">
-                <Label VerticalAlignment="Center">Client:</Label>
-                <TextBox x:Name="Message" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="120"/>
-                <Label VerticalAlignment="Center">Server:</Label>
+                <Label VerticalAlignment="Center">Server message :</Label>
                 <TextBlock x:Name="Retour" HorizontalAlignment="Right" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Vertical">
@@ -50,13 +48,6 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
                 
-                <Button Style="{StaticResource SelectAction}" Click="Send_Messages" Margin="0,0,1,0">Send Message
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"></Setter>
-                        </Style>
-                    </Button.Resources>
-                </Button>
                 <Button Style="{StaticResource SelectAction}" Click="Get_Messages" Margin="1,0,0,0">Get Messages
                     <Button.Resources>
                         <Style TargetType="Border">
@@ -66,14 +57,7 @@
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Button Style="{StaticResource SelectAction}" Click="Display" Margin="0,0,0,2" >Display Works
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"></Setter>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-                <Button Style="{StaticResource SelectAction}" Click="ExecuteAll" Margin="0,2,0,0">Execute all saves
+                <Button Style="{StaticResource SelectAction}" Click="Execute_AllSaves" Margin="0,0,0,2" >Execute all saves work
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"></Setter>
