@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiProject", "GuiProject\GuiProject.csproj", "{97BCC5BF-EDB5-4F75-9EBD-146EEA1722C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuiProject", "GuiProject\GuiProject.csproj", "{97BCC5BF-EDB5-4F75-9EBD-146EEA1722C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIProject.core", "GUIProject.core\GUIProject.core.csproj", "{7D66E1CE-3221-4303-86D2-4961CF53DC45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUIProject.core", "GUIProject.core\GUIProject.core.csproj", "{7D66E1CE-3221-4303-86D2-4961CF53DC45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

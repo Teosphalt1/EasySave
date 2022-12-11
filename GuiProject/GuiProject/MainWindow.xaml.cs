@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,8 +45,7 @@ namespace GuiProject
         private void LanguageSelection_Click(object sender, RoutedEventArgs e)
         {
             string lang = ((Button)sender).Tag.ToString();
-
-            switch(lang)
+            switch (lang)
             {
                 case "French":
                     LangHelper.ChangeLanguage("fr");
@@ -60,5 +60,7 @@ namespace GuiProject
                     break;
             }
         }
+
+        
     }
 }
