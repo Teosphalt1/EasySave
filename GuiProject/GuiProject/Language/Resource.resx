@@ -144,6 +144,9 @@
   <data name="Display save work min" xml:space="preserve">
     <value>Display save work</value>
   </data>
+  <data name="Establish connection" xml:space="preserve">
+    <value>Establish connection</value>
+  </data>
   <data name="Execute all save work maj" xml:space="preserve">
     <value>EXECUTE ALL SAVE WORK</value>
   </data>

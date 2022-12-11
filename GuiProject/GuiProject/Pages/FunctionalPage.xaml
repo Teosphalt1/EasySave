@@ -20,7 +20,7 @@
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Margin="2,0,2,0" >
                 <!--Display save-->
                 <TextBlock x:Name="displaySaveWorkMaj" TextAlignment="center" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Margin="0,1,0,0" Text=""></TextBlock>
-                <Button Style="{DynamicResource RoundButtonTemplate}" x:Name="displaySaveWorkMin" Tag="DisplaySaveWorks" Click="LeftMenu_Click" FontSize="13" Margin="0,5,0,0" Content="" Height="30"></Button>
+                <Button Style="{DynamicResource RoundButtonTemplate}" x:Name="displaySaveWorkMin" Tag="DisplaySaveWorks" Click="LeftMenu_Click" FontSize="13" Content="" Height="30"></Button>
                 <Separator Height="9" Background="Transparent"/>
                 <!--Add save-->
                 <TextBlock x:Name="addSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
@@ -48,7 +48,9 @@
                 <!--Execute all the saves-->
                 <TextBlock x:Name="executeAllSaveWorkMaj" TextAlignment="center" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
                 <Button Style="{DynamicResource RoundButtonTemplate}" Height="30" x:Name="executeAllSaveWorkMin" Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="13" Content=""></Button>
-                <Button Tag="Etablish_Connection" Click="LeftMenu_Click" Content="Etablish connection"/>
+                <!--Establish connection-->
+                <Separator Height="18" Background="Transparent"/>
+                <Button Style="{DynamicResource RoundButtonConnection}" Height="30" x:Name="establishConnection" Tag="Establish_Connection" Click="LeftMenu_Click" FontSize="13" Content=""/>
             </StackPanel>
             
             <!--DATA GRID LIST SAVE WORKS-->

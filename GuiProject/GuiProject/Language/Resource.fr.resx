@@ -139,16 +139,19 @@
     <value>Différentielle</value>
   </data>
   <data name="Display save work maj" xml:space="preserve">
-    <value>AFFICHER LES TRAVAUX DE SAUVEGARDE</value>
+    <value>AFFICHER LES SAUVEGARDES</value>
   </data>
   <data name="Display save work min" xml:space="preserve">
-    <value>Afficher les travaux de sauvegarde</value>
+    <value>Afficher les sauvegardes</value>
+  </data>
+  <data name="Establish connection" xml:space="preserve">
+    <value>Etablir la connexion</value>
   </data>
   <data name="Execute all save work maj" xml:space="preserve">
-    <value>EXECUTER TOUS LES TRAVAUX DE SAUVEGARDE</value>
+    <value>EXECUTER TOUS LES TRAVAUX</value>
   </data>
   <data name="Execute all save work min" xml:space="preserve">
-    <value>Executer tous les travaux de sauvegarde</value>
+    <value>Executer tous les travaux</value>
   </data>
   <data name="Execute save work maj" xml:space="preserve">
     <value>EXECUTER UN TRAVAIL DE SAUVEGARDE</value>
