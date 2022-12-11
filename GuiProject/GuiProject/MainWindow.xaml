@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:GuiProject"
         mc:Ignorable="d"    
         
-        Title="EasySave" Height="550" Width="930" MinHeight="550" MinWidth="930" Icon="/iconeSave.ico">
+        Title="EasySave" Height="550" Width="970" MinHeight="550" MinWidth="970" Icon="/iconeSave.ico" 
+      WindowStartupLocation="CenterScreen">
 
     <Border Background="White">
         <Grid>
