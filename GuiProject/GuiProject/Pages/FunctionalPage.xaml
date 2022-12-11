@@ -6,21 +6,21 @@
       xmlns:local="clr-namespace:GuiProject.Pages"
       mc:Ignorable="d"
       Title="FunctionalPage"
-      Height="550" Width="930">
+      Height="550" Width="970">
 
     <Border Background="White">
         <Grid>
             <!--DEFINE COLUMNS SIZES-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="240"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <!--LEFT MENU PANNEL-->
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Stretch" Grid.RowSpan="2" Margin="2,0,2,0" >
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Margin="2,0,2,0" >
                 <!--Display save-->
-                <TextBlock x:Name="displaySaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Margin="0,1,0,0" Text=""></TextBlock>
-                <Button x:Name="displaySaveWorkMin" Tag="DisplaySaveWorks" Click="LeftMenu_Click" FontSize="12" Margin="0,5,0,0" Content=""></Button>
+                <TextBlock x:Name="displaySaveWorkMaj" TextAlignment="center" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Margin="0,1,0,0" Text=""></TextBlock>
+                <Button Style="{DynamicResource RoundButtonTemplate}" x:Name="displaySaveWorkMin" Tag="DisplaySaveWorks" Click="LeftMenu_Click" FontSize="13" Margin="0,5,0,0" Content="" Height="30"></Button>
                 <Separator Height="9" Background="Transparent"/>
                 <!--Add save-->
                 <TextBlock x:Name="addSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
@@ -35,19 +35,19 @@
                     <ComboBoxItem x:Name="complete" Content=""></ComboBoxItem>
                     <ComboBoxItem x:Name="differential" Content=""></ComboBoxItem>
                 </ComboBox>
-                <Button x:Name="addSaveWorkMin" Tag="AddSaveWork" Click="LeftMenu_Click" FontSize="12" Margin="0,4,0,0" Content=""></Button>
+                <Button Style="{DynamicResource RoundButtonTemplate}" Height="30" x:Name="addSaveWorkMin" Tag="AddSaveWork" Click="LeftMenu_Click" FontSize="13" Margin="0,4,0,0" Content=""></Button>
                 <Separator Height="10" Background="Transparent"/>
                 <!--Execute one save-->
-                <TextBlock x:Name="executeSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
+                <TextBlock x:Name="executeSaveWorkMaj" TextAlignment="left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
                     <TextBlock x:Name="id" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text=""></TextBlock>
                     <TextBox x:Name="saveWorkToExecuteId" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Height="18" Margin="5,0,0,0"/>
                 </StackPanel>
-                <Button x:Name="executeSaveWorkMin" Tag="ExecuteOneSaveWork" Click="LeftMenu_Click" FontSize="12" Content=""></Button>
+                <Button Style="{DynamicResource RoundButtonTemplate}" Height="30" x:Name="executeSaveWorkMin" Tag="ExecuteOneSaveWork" Click="LeftMenu_Click" FontSize="13" Content=""></Button>
                 <Separator Height="8" Background="Transparent"/>
                 <!--Execute all the saves-->
-                <TextBlock x:Name="executeAllSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
-                <Button x:Name="executeAllSaveWorkMin" Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="10" Content=""></Button>
+                <TextBlock x:Name="executeAllSaveWorkMaj" TextAlignment="center" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
+                <Button Style="{DynamicResource RoundButtonTemplate}" Height="30" x:Name="executeAllSaveWorkMin" Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="13" Content=""></Button>
                 <Button Tag="Etablish_Connection" Click="LeftMenu_Click" Content="Etablish connection"/>
             </StackPanel>
             
