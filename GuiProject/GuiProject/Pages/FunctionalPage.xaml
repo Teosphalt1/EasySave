@@ -48,6 +48,7 @@
                 <!--Execute all the saves-->
                 <TextBlock x:Name="executeAllSaveWorkMaj" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" FontSize="15" FontWeight="Bold" Text=""></TextBlock>
                 <Button x:Name="executeAllSaveWorkMin" Tag="ExecuteSaveWorks" Click="LeftMenu_Click" FontSize="10" Content=""></Button>
+                <Button Tag="Etablish_Connection" Click="LeftMenu_Click" Content="Etablish connection"/>
             </StackPanel>
             
             <!--DATA GRID LIST SAVE WORKS-->

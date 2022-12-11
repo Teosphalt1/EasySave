@@ -24,6 +24,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using GUIProject;
+using System.Net;
 
 namespace GuiProject.Pages
 {
@@ -59,13 +60,9 @@ namespace GuiProject.Pages
             fileExtensionToPrioritize.Text = LangHelper.GetString("File extension to prioritize");
 
         }
-<<<<<<< HEAD
-        
-        public void LeftMenu_Click(object sender, RoutedEventArgs e)
-=======
+
 
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
->>>>>>> 170275a97a9611a66bd6433a9d03366bab8543c9
         {
             string menuType = ((Button)sender).Tag.ToString();
             
@@ -195,6 +192,12 @@ namespace GuiProject.Pages
                     playButton.Background = Brushes.Green;
                     manualResetEvent.Set();
                     pauseButton.ClearValue(Button.BackgroundProperty);
+                    break;
+                case "Etablish_Connection":
+                    IPAddress myIp = IPAddress.Parse("127.0.0.1");
+                    int port = 3000;
+                    Server server = new Server(myIp, port);
+                    server.TryConnection(server);
                     break;
                 default:
                     break;

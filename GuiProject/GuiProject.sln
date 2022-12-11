@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuiProject", "GuiProject\Gu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GUIProject.core", "GUIProject.core\GUIProject.core.csproj", "{7D66E1CE-3221-4303-86D2-4961CF53DC45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console_Server", "Server\Console_Server.csproj", "{EEEA3CD6-64C2-4F1A-9EB0-DA0A8A51325E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{7D66E1CE-3221-4303-86D2-4961CF53DC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D66E1CE-3221-4303-86D2-4961CF53DC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D66E1CE-3221-4303-86D2-4961CF53DC45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEEA3CD6-64C2-4F1A-9EB0-DA0A8A51325E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEEA3CD6-64C2-4F1A-9EB0-DA0A8A51325E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEEA3CD6-64C2-4F1A-9EB0-DA0A8A51325E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEEA3CD6-64C2-4F1A-9EB0-DA0A8A51325E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
