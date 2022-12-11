@@ -78,8 +78,9 @@ namespace GUIProject
                         manualResetEvent.WaitOne(Timeout.Infinite);
                         while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
                         {
-                            Thread.Sleep(10);
+                            manualResetEvent.Reset();
                         }
+                        manualResetEvent.Set();
                         Thread.Sleep(3000);
                         long actualFileSize = new System.IO.FileInfo(newPath).Length;
                         long sizeleft = dirSize - actualFileSize;

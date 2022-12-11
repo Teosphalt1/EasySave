@@ -79,8 +79,9 @@ namespace GUIProject.core.Services.Strategies
                             manualResetEvent.WaitOne(Timeout.Infinite);
                             while ((Process.GetProcessesByName(blockIfRunning).Length > 0))
                             {
-                                Thread.Sleep(10);
+                                manualResetEvent.Reset();
                             }
+                            manualResetEvent.Set();
                             Thread.Sleep(1000);
                             long actualFileSize = new System.IO.FileInfo(newPath).Length;
                             long sizeleft = dirSize - actualFileSize;
