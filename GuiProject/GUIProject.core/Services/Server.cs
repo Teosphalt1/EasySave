@@ -141,14 +141,15 @@ namespace GuiProject
                                 break;
 
                             case "Stop":
-                                if (threadList != null)
-                                {
-                                    foreach (Thread thread in threadList)
-                                    {
-                                        thread.Interrupt();
-                                    }
-                                }
-                                threadList.Clear();
+                                //if (threadList != null)
+                                //{
+                                //    foreach (Thread thread in threadList)
+                                //    {
+                                //        thread.Interrupt();
+                                //    }
+                                //}
+                                //threadList.Clear();
+                                new ActionsPPS().Stop(threadList);
                                 server.streamWriter.WriteLine($"Save stopped");
                                 server.streamWriter.Flush();
                                 break;

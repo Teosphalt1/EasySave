@@ -61,7 +61,7 @@ namespace GUIProject
             if (File.Exists(fileName))
             {
                 XmlDocument xdoc = new XmlDocument();
-                xdoc.Load(fileName); ;
+                xdoc.Load(fileName);
 
                 long length;
                 try
