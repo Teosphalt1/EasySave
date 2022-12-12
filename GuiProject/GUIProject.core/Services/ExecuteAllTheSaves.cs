@@ -20,7 +20,7 @@ namespace GUIProject
         /// will gather the informations to fill logs.json
         /// will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent)
+        public void ExecuteSave(string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent, string priorityFile)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -35,7 +35,7 @@ namespace GUIProject
                     Thread t = new Thread(
                         ()=>
                         {
-                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, manualResetEvent);  
+                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, manualResetEvent, priorityFile);  
                         }
                         );
                     t.Start();
@@ -45,7 +45,7 @@ namespace GUIProject
             }
         }
 
-        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, ManualResetEvent manualResetEvent)
+        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, ManualResetEvent manualResetEvent, string priorityFile)
         {
             
             try
@@ -66,7 +66,7 @@ namespace GUIProject
                     string[] MyFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories);
                     foreach (string file in MyFiles)
                     {
-                        if (file.Contains(".txt"))
+                        if (file.Contains(priorityFile))
                         {
                             MyFiles = MyFiles.Where(o => o != file).ToArray();
                             MyFiles = MyFiles.Prepend(file).ToArray();

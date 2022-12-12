@@ -66,7 +66,10 @@ namespace GuiProject.Pages
         private void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
             string menuType = ((Button)sender).Tag.ToString();
-            
+            string priorityFile;
+            string cryptFiles;
+            string blockIfRunning;
+
             switch (menuType)
             {
                 case "DisplaySaveWorks":
@@ -129,23 +132,29 @@ namespace GuiProject.Pages
                     }
                     break;
                 case "ExecuteSaveWorks":
-                    string blockIfRunningAll = BlockIfRunning.Text;
-                    string cryptFilesAll;
+                    blockIfRunning = BlockIfRunning.Text;
                     if (CryptFiles.SelectedIndex.ToString() == "1")
                     {
-                        cryptFilesAll = ".mp4";
+                        cryptFiles = ".mp4";
                     }
                     else
                     {
-                        cryptFilesAll = "NothingToCrypt";
+                        cryptFiles = "NothingToCrypt";
                     }
-                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList, cryptFilesAll, manualResetEvent);
+                    if (PrioritizeFiles.SelectedIndex.ToString() == "1")
+                    {
+                        priorityFile = ".txt";
+                    }
+                    else
+                    {
+                        priorityFile = "NothingToCrypt";
+                    }
+                    new ExecuteAllTheSaves().ExecuteSave(blockIfRunning, threadList, cryptFiles, manualResetEvent, priorityFile);
                     MessageBox.Show($"{LangHelper.GetString("Saves work launched")}");
                     break;
                 case "ExecuteOneSaveWork":
-                    string blockIfRunningOne = BlockIfRunning.Text;
+                    blockIfRunning = BlockIfRunning.Text;
                     string myId = saveWorkToExecuteId.Text;
-                    string cryptFilesOne;
                     if(myId == "")
                     {
                         MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
@@ -159,13 +168,21 @@ namespace GuiProject.Pages
                         {
                             if (CryptFiles.SelectedIndex.ToString() == "1")
                             {
-                                cryptFilesOne = ".mp4";
+                                cryptFiles = ".mp4";
                             }
                             else
                             {
-                                cryptFilesOne = "NothingToCrypt";
+                                cryptFiles = "NothingToCrypt";
                             }
-                            new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne, threadList, cryptFilesOne, manualResetEvent);
+                            if (PrioritizeFiles.SelectedIndex.ToString() == "1")
+                            {
+                                priorityFile = ".txt";
+                            }
+                            else
+                            {
+                                priorityFile = "NothingToCrypt";
+                            }
+                            new ExecuteOneSave().ExecuteSave(myId, blockIfRunning, threadList, cryptFiles, manualResetEvent, priorityFile);
                             MessageBox.Show($"{LangHelper.GetString("Save work launched")}");
                         }
                         else

@@ -11,12 +11,12 @@ namespace GUIProject
     {
         public void Play(ManualResetEvent manualResetEvent)
         {
-            new ActionsPPS().Play(manualResetEvent);
+            manualResetEvent.Set();
         }
 
         public void Pause(ManualResetEvent manualResetEvent)
         {
-            new ActionsPPS().Pause(manualResetEvent);
+            manualResetEvent.Reset();
         }
 
         public void Stop(IList<Thread> threadList)

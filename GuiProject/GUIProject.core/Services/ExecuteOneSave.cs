@@ -20,7 +20,7 @@ namespace GUIProject.core.Services.Strategies
         /// Will gather the informations to fill logs.json
         /// Will gather the informations to update in real time the file state.json
         /// </summary>
-        public void ExecuteSave(string myId, string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent)
+        public void ExecuteSave(string myId, string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent, string priorityFile)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -38,7 +38,7 @@ namespace GUIProject.core.Services.Strategies
                     Thread t = new Thread(
                         ()=>
                         {
-                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint, manualResetEvent);
+                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint, manualResetEvent, priorityFile);
                         }
                         );
                     t.Start();
@@ -47,7 +47,7 @@ namespace GUIProject.core.Services.Strategies
             }
         }
 
-        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, int myIdint, ManualResetEvent manualResetEvent)
+        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, int myIdint, ManualResetEvent manualResetEvent, string priorityFile)
         {
             if (post.id == myIdint)
             {
@@ -68,7 +68,7 @@ namespace GUIProject.core.Services.Strategies
                         string[] MyFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories);
                         foreach (string file in MyFiles)
                         {
-                            if (file.Contains(".txt"))
+                            if (file.Contains(priorityFile))
                             {
                                 MyFiles = MyFiles.Where(o => o != file).ToArray();
                                 MyFiles = MyFiles.Prepend(file).ToArray();
