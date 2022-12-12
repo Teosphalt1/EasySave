@@ -29,7 +29,7 @@ using System.Net;
 namespace GuiProject.Pages
 {
     /// <summary>
-    /// Logique d'interaction pour FunctionalPage.xaml
+    /// Interaction logic for FunctionalPage.xaml
     /// </summary>
     public partial class FunctionalPage : Page
     {
@@ -40,6 +40,7 @@ namespace GuiProject.Pages
         {
             InitializeComponent();
             
+            // All the words references needed for the dictionnary
             displaySaveWorkMaj.Text = LangHelper.GetString("Display save work maj");
             displaySaveWorkMin.Content = LangHelper.GetString("Display save work min");
             addSaveWorkMin.Content = LangHelper.GetString("Add save work min");
@@ -70,9 +71,11 @@ namespace GuiProject.Pages
             string cryptFiles;
             string blockIfRunning;
 
+            // If there is a button clicked, differents actions will happen
             switch (menuType)
             {
                 case "DisplaySaveWorks":
+                    // Display all the save work in the application
                     ServiceDB servicedb = new ServiceDB();
                     servicedb.GetAll().Clear();
                     servicedb.GenerateSaveWork();
@@ -80,6 +83,7 @@ namespace GuiProject.Pages
                     ListSaveWorks.ItemsSource = servicedb.GetAll();
                     break;
                 case "AddSaveWork":
+                    // Add a new save work if all the fields are completed
                     DateTime now = DateTime.Now;
                     string mySaveType = "0";
                     if (saveType.SelectedIndex.ToString() == "0")
@@ -91,10 +95,12 @@ namespace GuiProject.Pages
                         mySaveType = "differential";
                     }
 
+                    // If a field isn't completed, notices the user that a field is missing
                     if(saveName.Text.Length == 0 || saveSource.Text.Length == 0 || saveDest.Text.Length == 0)
                     {
                         MessageBox.Show($"{LangHelper.GetString("Field missing")}");
                     }
+                    // Add the save work and execute it if no field is missing
                     else
                     {
                         
@@ -132,6 +138,9 @@ namespace GuiProject.Pages
                     }
                     break;
                 case "ExecuteSaveWorks":
+                    // Select if there is a type of file to crypt,
+                    // Select if there is a type of file to prioritize
+                    // Execute all existing save work with selected parameters
                     blockIfRunning = BlockIfRunning.Text;
                     if (CryptFiles.SelectedIndex.ToString() == "1")
                     {
@@ -153,8 +162,10 @@ namespace GuiProject.Pages
                     MessageBox.Show($"{LangHelper.GetString("Saves work launched")}");
                     break;
                 case "ExecuteOneSaveWork":
+                    // Execute the save work selected by the user
                     blockIfRunning = BlockIfRunning.Text;
                     string myId = saveWorkToExecuteId.Text;
+                    // If the field ID isn't completed, notify the user
                     if(myId == "")
                     {
                         MessageBox.Show($"{LangHelper.GetString("Bad Id")}");
@@ -164,6 +175,10 @@ namespace GuiProject.Pages
                         int intId = Int16.Parse(myId);
                         ServiceDB serviced = new ServiceDB();
                         serviced.GenerateSaveWork();
+                        // If the Id is relied to a save,
+                        // Select if there is a type of file to crypt,
+                        // Select if there is a type of file to prioritize
+                        // Execute the save work with selected parameters
                         if (intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
                         {
                             if (CryptFiles.SelectedIndex.ToString() == "1")
@@ -192,19 +207,23 @@ namespace GuiProject.Pages
                     }
                     break;
                 case "StopSaveWorks":
+                    // Stop and cancel all the save work currently executing
                     new ActionsPPS().Stop(threadList);
                     break;
                 case "PauseSaveWorks":
+                    // Pause all the save work currently executing
                     pauseButton.Background = Brushes.Green;
                     new ActionsPPS().Pause(manualResetEvent);
                     playButton.ClearValue(Button.BackgroundProperty);
                     break;
                 case "PlaySaveWorks":
+                    // Resume all the save work currently paused
                     playButton.Background = Brushes.Green;
                     new ActionsPPS().Play(manualResetEvent);
                     pauseButton.ClearValue(Button.BackgroundProperty);
                     break;
                 case "Establish_Connection":
+                    // Launch the server that permits the connexion with the Client
                     IPAddress myIp = IPAddress.Parse("127.0.0.1");
                     int port = 3000;
                     Server server = new Server(myIp, port);

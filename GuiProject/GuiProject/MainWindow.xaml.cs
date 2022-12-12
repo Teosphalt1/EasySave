@@ -44,6 +44,7 @@ namespace GuiProject
 
         private void LanguageSelection_Click(object sender, RoutedEventArgs e)
         {
+            // Wait until click from user to select language and redirect him to functionnal page
             string lang = ((Button)sender).Tag.ToString();
             switch (lang)
             {
