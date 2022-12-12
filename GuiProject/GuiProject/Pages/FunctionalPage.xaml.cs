@@ -175,23 +175,16 @@ namespace GuiProject.Pages
                     }
                     break;
                 case "StopSaveWorks":
-                    if (threadList != null)
-                    {
-                        foreach (Thread thread in threadList)
-                        {
-                            thread.Interrupt();
-                        }
-                    }
-                    threadList.Clear();
+                    new ActionsPPS().Stop(threadList);
                     break;
                 case "PauseSaveWorks":
                     pauseButton.Background = Brushes.Green;
-                    manualResetEvent.Reset();
+                    new ActionsPPS().Pause(manualResetEvent);
                     playButton.ClearValue(Button.BackgroundProperty);
                     break;
                 case "PlaySaveWorks":
                     playButton.Background = Brushes.Green;
-                    manualResetEvent.Set();
+                    new ActionsPPS().Play(manualResetEvent);
                     pauseButton.ClearValue(Button.BackgroundProperty);
                     break;
                 case "Establish_Connection":
