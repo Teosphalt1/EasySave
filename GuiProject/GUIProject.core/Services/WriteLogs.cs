@@ -1,10 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace GUIProject
@@ -12,7 +7,7 @@ namespace GUIProject
     public class WriteLogs
     {
         /// <summary>
-        /// This permits to write the logs on json
+        /// Allows to write the logs in JSON using the parameters given by executing on or all the saveworks
         /// </summary>
         /// <param name="Name"></param>
         /// <param name="newPath"></param>
@@ -52,6 +47,15 @@ namespace GUIProject
                 File.WriteAllText(fileName, json);
             }
         }
+
+        /// <summary>
+        /// Allows to write the logs in XML using the parameters given by executing on or all the saveworks
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="newPath"></param>
+        /// <param name="destPath"></param>
+        /// <param name="ts"></param>
+        /// <param name="cryptTime"></param>
         public static void WriteLogsOnXML(string Name, string newPath, string destPath, TimeSpan ts, TimeSpan cryptTime)
         {
             string elapsedTime = ts.ToString();

@@ -1,25 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace GUIProject
 {
     public class ServiceDB
     {
+        /// <summary>
+        /// Retrive the list of all the saveworks
+        /// </summary>
+        /// <returns></returns>
         public List<SaveWork> GetAll()
         {
             return Repository.Instance().SaveWorks;
         }
 
+        /// <summary>
+        /// Add a savework to our list
+        /// </summary>
+        /// <param name="work"></param>
         public void Add(SaveWork work)
         {
             Repository.Instance().SaveWorks.Add(work);
         }
 
+        /// <summary>
+        /// Get the list of all the saveworks from a database in json
+        /// </summary>
         public void GenerateSaveWork()
         {
             string fileName = @"c:\bdd.json";
@@ -40,6 +46,10 @@ namespace GUIProject
             };
         }
 
+        /// <summary>
+        /// Add a savework to our database in json
+        /// </summary>
+        /// <param name="savework"></param>
         public void WriteSaveWork(SaveWork savework)
         {
             string fileName = @"c:\bdd.json";

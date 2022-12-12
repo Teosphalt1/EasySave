@@ -14,12 +14,15 @@ namespace GUIProject
     
     public class ExecuteAllTheSaves
     {
-        //public ManualResetEvent _manualResetEvent = new ManualResetEvent(true);
         /// <summary>
-        /// Will execute all the different save works registered on bdd.json
-        /// will gather the informations to fill logs.json
-        /// will gather the informations to update in real time the file state.json
+        /// Gather the information to execute all the save works
+        /// Launch the working function in a thread for multithreading
         /// </summary>
+        /// <param name="blockIfRunning"></param>
+        /// <param name="threadlist"></param>
+        /// <param name="extensionToCrypt"></param>
+        /// <param name="manualResetEvent"></param>
+        /// <param name="priorityFile"></param>
         public void ExecuteSave(string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent, string priorityFile)
         {
             string fileName = @"c:\bdd.json";
@@ -45,6 +48,21 @@ namespace GUIProject
             }
         }
 
+        /// <summary>
+        /// Save every file and folder conatains in the source folder
+        /// Decide according to the options given by the users to prioritize a particular type of file
+        /// Decide according to the options given by the users to encrypt a particular type of file
+        /// Decide according to the options given by the users to pause the execution while a blocking software is launched
+        /// Check by using a manual reset event if the thread need to be paused
+        /// Gather the informations to give and laucnh the writing of logs in JSON and XML but alsoo for the states file
+        /// </summary>
+        /// <param name="blockIfRunning"></param>
+        /// <param name="post"></param>
+        /// <param name="state"></param>
+        /// <param name="ts"></param>
+        /// <param name="extensionToCrypt"></param>
+        /// <param name="manualResetEvent"></param>
+        /// <param name="priorityFile"></param>
         public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, ManualResetEvent manualResetEvent, string priorityFile)
         {
             

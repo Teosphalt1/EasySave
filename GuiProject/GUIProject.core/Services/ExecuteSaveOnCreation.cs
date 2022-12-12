@@ -1,15 +1,13 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GUIProject
 {
     public class ExecuteSaveOnCreation
     {
+        /// <summary>
+        /// Execute the save as a complete save right after it's creation
+        /// Will not write on logs or on states
+        /// </summary>
         public void ExecuteSave()
         {
             string fileName = @"c:\bdd.json";
@@ -38,7 +36,6 @@ namespace GUIProject
                             catch
                             {
                                 Console.WriteLine($"Error can't find source of {post.Name}");
-                                //Console.WriteLine("Error cant find source of " + post.Name);
                             }
                         }
                         catch
