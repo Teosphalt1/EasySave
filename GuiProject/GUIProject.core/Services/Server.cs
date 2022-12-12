@@ -6,6 +6,8 @@ using GuiProject;
 using GUIProject;
 using System.Threading;
 using GUIProject.core.Services.Strategies;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace GuiProject
 {
@@ -151,6 +153,17 @@ namespace GuiProject
                                 threadList.Clear();
                                 server.streamWriter.WriteLine($"Save stopped");
                                 server.streamWriter.Flush();
+                                break;
+                            case "Display":
+                                ServiceDB servicedb = new ServiceDB();
+                                servicedb.GetAll().Clear();
+                                servicedb.GenerateSaveWork();
+                                servicedb.GetAll();
+
+                                string serializedMessage = JsonConvert.SerializeObject(servicedb.GetAll());
+                                server.streamWriter.WriteLine(serializedMessage);
+                                server.streamWriter.Flush();
+                               
                                 break;
                         }
                     }

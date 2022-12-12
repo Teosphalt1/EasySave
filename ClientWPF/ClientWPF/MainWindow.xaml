@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0,2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
@@ -55,9 +55,17 @@
                         </Style>
                     </Button.Resources>
                 </Button>
+                
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Button Style="{StaticResource SelectAction}" Click="Execute_AllSaves" Margin="0,0,0,2" >Execute all saves work
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Style="{StaticResource SelectAction}" Click="Display" Margin="1,0,0,0">Display all saves
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"></Setter>

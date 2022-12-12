@@ -15,9 +15,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClientWPF;
 using ClientWPF.core;
+using Newtonsoft.Json;
+using System.Net.Sockets;
 
 namespace ClientWPF
 {
+   
     public partial class MainWindow : Window
     {
         static string myIp = "127.0.0.1";
@@ -38,6 +41,7 @@ namespace ClientWPF
             try
             {
                 messageFromServer = client.streamReader.ReadLine();
+                var test = messageFromServer;
                 while (messageFromServer != "")
                 {
                     Retour.Text = messageFromServer;
@@ -49,7 +53,7 @@ namespace ClientWPF
                 MessageBox.Show($"No new message");
             }
         }
-          public void LeftMenu_Click(object sender, RoutedEventArgs e)
+        public void LeftMenu_Click(object sender, RoutedEventArgs e)
         {
             string menuType = ((Button)sender).Tag.ToString();
             switch (menuType)
@@ -88,6 +92,22 @@ namespace ClientWPF
             messageToServer = ID_Message.Text;
             client.streamWriter.WriteLine($"{messageToServer}");
             client.streamWriter.Flush();
+        }
+
+
+        public void Display(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Display Save Work");
+            messageToServer = "Display";
+            client.streamWriter.WriteLine($"{messageToServer}");
+            client.streamWriter.Flush();
+            Thread.Sleep(2000);
+            messageFromServer = client.streamReader.ReadLine();
+            ServiceDB servicedb = new ServiceDB();
+            servicedb.GetAll().Clear();
+            servicedb.GenerateSaveWork(messageFromServer);
+            ListSaveWorks.Items.Refresh();
+            ListSaveWorks.ItemsSource = servicedb.GetAll();
         }
     }
 }
