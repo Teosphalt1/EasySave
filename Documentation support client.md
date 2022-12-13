@@ -12,6 +12,27 @@
 Projet Programmation Système
 │   Documentation support client.md    
 │
+└───ClientWPF
+│ 	│	ClientWPF.sln
+│ 	│
+│	└───ClientWPF
+│	│	│	App.xaml
+│	│	│	App.xaml.cs
+│	│	│	AssemblyInfo.cs
+│	│	│	ClientWPF.csproj
+│	│	│	MainWindow.xaml
+│	│	│	MainWindow.xaml.cs
+│	│	│	pause-button.png
+│	│	│	play-button.png
+│	│	│	stop-button.png
+│	│	│
+│	│	ClientWPF.core
+│	│	│	ClientWPF.core.csproj
+│	│	│	Repository.cs
+│	│	│	SaveWork.cs
+│	│	│	ServiceDB.cs
+│	└───└────────────────────────────────
+│	│
 └───ConsoleProject
 │   │	ConsoleProject.csproj
 │   │   ConsoleProject.sln
@@ -42,8 +63,15 @@ Projet Programmation Système
 │   │   View
 │   │   │   View.cs
 │   └───└────────────────────────────────
-|	|
+│	│
+└───CryptoSoft
+│	│	CryptoSoft.csproj
+│	│	CryptoSoft.sln
+│	│	Program.cs
+│   └────────────────────────────────────
+│	│
 └───GuiProject
+│ 	│	GuiProject.sln
 │ 	│
 │	└───GuiProject
 │	│	│	App.xaml
@@ -85,23 +113,29 @@ Projet Programmation Système
 │	│	│	│	Repository.cs
 │	│	│	│
 │	│	│	Services
-│	│	│	│	InterfaceSaveType.cs
+│	│	│	│	ActionPPS.cs
+│	│	│	│	EncryptFile.cs
+│	│	│	│	ExecuteAllTheSave.cs
+│	│	│	│	ExecuteOneSave.cs
+│	│	│	│	ExecuteSaveOnCreation.cs
+│	│	│	│	Server.cs
+│	│	│	│	ServiceDB.cs
 │	│	│	│	WriteLogs.cs
 │	│	│	│	WriteStates.cs
 │	│	│	│
-│	│	│	└───Strategies
-│	│	│	│	│	ExecuteAllTheSave.cs
-│	│	│	│	│	ExecuteOneSave.cs
-│	│	│	│	│	ExecuteSaveOnCreation.cs
-│	│	│	│	│	ServiceDB.cs
-└───└───└───└───└────────────────────────────────     
+│	│	Server
+│	│	│	Console_Server.csproj
+│	│	│	Program.cs
+│	│	│	Server.cs
+└───└───└───────────────────────────────────     
 
 ```
 ## Emplacement des fichiers de configuration
 Fichier de configuration de sauvegarde 'bdd.json' : C:\\bdd.json  
-Fichier logs 'logs.json' : C:\\logs.json  
-Fichier statut 'states.json' :C:\\states.json  
-Les fichiers JSON sont placés dans un premier temps à cet endroit afin de faciliter leur accès pour la première version de l'application
+Fichier logs au format JSON 'logs.json' : C:\\logs.json  
+Fichier logs au format XML 'logs.xml' : C:\\logs.xml  
+Fichier statut 'states.json' : C:\\states.json  
+Les fichiers JSON sont placés dans un premier temps à cet endroit afin de faciliter leur accès pour les premières versions de l'application
 ________________________________________________________________
 
 # [EN] CLIENT SUPPORT DOCUMENTATION
@@ -115,10 +149,30 @@ ________________________________________________________________
 
 ## Project spanning tree
 ```
-
 Projet Programmation Système
 │   Documentation support client.md    
 │
+└───ClientWPF
+│ 	│	ClientWPF.sln
+│ 	│
+│	└───ClientWPF
+│	│	│	App.xaml
+│	│	│	App.xaml.cs
+│	│	│	AssemblyInfo.cs
+│	│	│	ClientWPF.csproj
+│	│	│	MainWindow.xaml
+│	│	│	MainWindow.xaml.cs
+│	│	│	pause-button.png
+│	│	│	play-button.png
+│	│	│	stop-button.png
+│	│	│
+│	│	ClientWPF.core
+│	│	│	ClientWPF.core.csproj
+│	│	│	Repository.cs
+│	│	│	SaveWork.cs
+│	│	│	ServiceDB.cs
+│	└───└────────────────────────────────
+│	│
 └───ConsoleProject
 │   │	ConsoleProject.csproj
 │   │   ConsoleProject.sln
@@ -149,8 +203,15 @@ Projet Programmation Système
 │   │   View
 │   │   │   View.cs
 │   └───└────────────────────────────────
-|	|
+│	│
+└───CryptoSoft
+│	│	CryptoSoft.csproj
+│	│	CryptoSoft.sln
+│	│	Program.cs
+│   └────────────────────────────────────
+│	│
 └───GuiProject
+│ 	│	GuiProject.sln
 │ 	│
 │	└───GuiProject
 │	│	│	App.xaml
@@ -192,20 +253,26 @@ Projet Programmation Système
 │	│	│	│	Repository.cs
 │	│	│	│
 │	│	│	Services
-│	│	│	│	InterfaceSaveType.cs
+│	│	│	│	ActionPPS.cs
+│	│	│	│	EncryptFile.cs
+│	│	│	│	ExecuteAllTheSave.cs
+│	│	│	│	ExecuteOneSave.cs
+│	│	│	│	ExecuteSaveOnCreation.cs
+│	│	│	│	Server.cs
+│	│	│	│	ServiceDB.cs
 │	│	│	│	WriteLogs.cs
 │	│	│	│	WriteStates.cs
 │	│	│	│
-│	│	│	└───Strategies
-│	│	│	│	│	ExecuteAllTheSave.cs
-│	│	│	│	│	ExecuteOneSave.cs
-│	│	│	│	│	ExecuteSaveOnCreation.cs
-│	│	│	│	│	ServiceDB.cs
-└───└───└───└───└────────────────────────────────     
+│	│	Server
+│	│	│	Console_Server.csproj
+│	│	│	Program.cs
+│	│	│	Server.cs
+└───└───└───────────────────────────────────     
 
 ```
 ## Configuration files location
 Backup configuration file 'bdd.json' : C:\\bdd.json  
-Logs file 'logs.json' : C:\\logs.json  
-State file 'states.json' :C:\\states.json  
-JSON files are first placed here for an easy acces on this first version of the application
+Logs file JSON format 'logs.json' : C:\\logs.json  
+Logs file XML format 'logs.xml' : C:\\logs.xml  
+State file 'states.json' : C:\\states.json  
+JSON files are first placed here for an easy acces on the first versions of the application
