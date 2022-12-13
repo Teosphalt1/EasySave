@@ -168,6 +168,9 @@
   <data name="File extension to prioritize" xml:space="preserve">
     <value>Extension de fichier à prioriser</value>
   </data>
+  <data name="File size maximum" xml:space="preserve">
+    <value>Taille de fichier maximum</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
   </data>

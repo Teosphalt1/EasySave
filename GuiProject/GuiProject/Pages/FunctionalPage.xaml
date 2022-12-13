@@ -92,8 +92,15 @@
                 </ComboBox>
             </StackPanel>
 
+            <!--File size maximum to copy simultaneously-->
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,45">
+                <TextBlock x:Name="fileSizeMaxi" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text="" Margin="0,0,5,0"/>
+                <TextBox x:Name="FileSizeMaxi" TextWrapping="Wrap"  Width="120" Height="18"/>
+            </StackPanel>
+            
+            
             <!--BLOCKING SOFTWARE-->
-            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,55">
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,75">
                 <TextBlock x:Name="blockingSoftware" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="auto" Text="" Margin="0,0,5,0"/>
                 <TextBox x:Name="BlockIfRunning" TextWrapping="Wrap"  Width="120" Height="18"/>
             </StackPanel>

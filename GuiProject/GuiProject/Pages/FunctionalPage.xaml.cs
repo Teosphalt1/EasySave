@@ -60,7 +60,7 @@ namespace GuiProject.Pages
             fileExtensionToEncrypt.Text = LangHelper.GetString("File extension to encrypt");
             fileExtensionToPrioritize.Text = LangHelper.GetString("File extension to prioritize");
             establishConnection.Content = LangHelper.GetString("Establish connection");
-
+            fileSizeMaxi.Text = LangHelper.GetString("File size maximum");
         }
 
 
