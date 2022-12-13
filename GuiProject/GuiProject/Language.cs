@@ -2,10 +2,13 @@
 using System.Resources;
 using System.Reflection;
 
+
 public static class LangHelper
 {
+    /// <summary>
+    /// Here is the language class and his methods to use the correct dictionnary when needed
+    /// </summary>
     private static ResourceManager _rm;
-    //static constructor
     static LangHelper()
     {
         _rm = new ResourceManager("GuiProject.Language.Resource", Assembly.GetExecutingAssembly());

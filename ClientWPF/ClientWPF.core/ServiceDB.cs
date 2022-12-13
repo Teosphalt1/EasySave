@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ClientWPF
 {
+    /// <summary>
+    /// Class used to get and display the list of the save work
+    /// </summary>
     public class ServiceDB
     {
         public List<SaveWork> GetAll()

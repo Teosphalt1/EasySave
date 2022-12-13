@@ -92,6 +92,8 @@ namespace GuiProject
             {
                 server.clientData();
                 string messageToClient = "";
+                string priorityFile = "";
+                string cryptFiles = "";
 
                 while (server.serverStatus)
                 {
@@ -104,29 +106,30 @@ namespace GuiProject
                                 server.streamWriter.WriteLine($"Executing save");
                                 server.streamWriter.Flush();
                                 string blockIfRunningAll = "";
-                                string cryptFilesAll = "NothingToCrypt";
-                                new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList, cryptFilesAll, manualResetEvent);
+                                cryptFiles = "NothingToCrypt";
+                                new ExecuteAllTheSaves().ExecuteSave(blockIfRunningAll, threadList, cryptFiles, manualResetEvent, priorityFile);
                                 break;
 
                             case "Execute_One_Save":
-
                                 Thread.Sleep(8000);
                                 string myId = streamReader.ReadLine();
                                 server.streamWriter.WriteLine($"Executing save {myId}");
                                 server.streamWriter.Flush();
                                 string blockIfRunningOne = "";
-                                string cryptFilesOne = "NothingToCrypt";
+                                cryptFiles = "NothingToCrypt";
                                 int intId = Int16.Parse(myId);
                                 ServiceDB serviced = new ServiceDB();
                                 serviced.GenerateSaveWork();
                                 if (intId >= serviced.GetAll().FirstOrDefault().id && intId <= serviced.GetAll().LastOrDefault().id)
                                 {
-                                    new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne, threadList, cryptFilesOne, manualResetEvent);
+                                    new ExecuteOneSave().ExecuteSave(myId, blockIfRunningOne, threadList, cryptFiles, manualResetEvent, priorityFile);
                                     server.streamWriter.WriteLine($"Save work {myId} executing");
+                                    server.streamWriter.Flush();
                                 }
                                 else
                                 {
                                     server.streamWriter.WriteLine("Bad ID");
+                                    server.streamWriter.Flush();
                                 }
                                 break;
 
@@ -143,14 +146,6 @@ namespace GuiProject
                                 break;
 
                             case "Stop":
-                                //if (threadList != null)
-                                //{
-                                //    foreach (Thread thread in threadList)
-                                //    {
-                                //        thread.Interrupt();
-                                //    }
-                                //}
-                                //threadList.Clear();
                                 new ActionsPPS().Stop(threadList);
                                 server.streamWriter.WriteLine($"Save stopped");
                                 server.streamWriter.Flush();

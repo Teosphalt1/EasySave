@@ -2,6 +2,11 @@
 
 class Program
 {
+    const byte Secret = 101;
+    /// <summary>
+    /// Take as args the source file and the destination of the file to encrypt
+    /// Rewrite the file using the encryption method by verifying if each byte has been encrypted
+    /// </summary>
     static void Main(string[] args)
     {
         var a = args[0];
@@ -20,8 +25,11 @@ class Program
             }
         }
     }
-    const byte Secret = 101;
+    
 
+    /// <summary>
+    /// Use a XOR method with a key that will encrypt every byte of the file with the key
+    /// <summary>
     static void EncryptBytes(byte[] buffer, int count)
     {
 

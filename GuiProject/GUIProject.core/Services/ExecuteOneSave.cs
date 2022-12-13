@@ -1,26 +1,21 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace GUIProject.core.Services.Strategies
 {
-    /// <summary>
-    /// Inheritance class  of the interface IStrategySaveType to use ExecuteSave()
-    /// </summary>
     public class ExecuteOneSave
     {
         /// <summary>
-        /// Will execute the specific save work given by the user which is registered on bdd.json
-        /// Will gather the informations to fill logs.json
-        /// Will gather the informations to update in real time the file state.json
+        /// Gather the information to execute one the save work
+        /// Launch the working function in a thread for multithreading
         /// </summary>
-        public void ExecuteSave(string myId, string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent)
+        /// <param name="myId"></param>
+        /// <param name="blockIfRunning"></param>
+        /// <param name="threadlist"></param>
+        /// <param name="extensionToCrypt"></param>
+        /// <param name="manualResetEvent"></param>
+        /// <param name="priorityFile"></param>
+        public void ExecuteSave(string myId, string blockIfRunning, IList<Thread> threadlist, string extensionToCrypt, ManualResetEvent manualResetEvent, string priorityFile)
         {
             string fileName = @"c:\bdd.json";
             if (System.IO.File.Exists(fileName))
@@ -38,7 +33,7 @@ namespace GUIProject.core.Services.Strategies
                     Thread t = new Thread(
                         ()=>
                         {
-                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint, manualResetEvent);
+                            DoWork(blockIfRunning, post, state, ts, extensionToCrypt, myIdint, manualResetEvent, priorityFile);
                         }
                         );
                     t.Start();
@@ -47,7 +42,22 @@ namespace GUIProject.core.Services.Strategies
             }
         }
 
-        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, int myIdint, ManualResetEvent manualResetEvent)
+        /// <summary>
+        /// Save every file and folder conatains in the source folder
+        /// Decide according to the options given by the users to prioritize a particular type of file
+        /// Decide according to the options given by the users to encrypt a particular type of file
+        /// Decide according to the options given by the users to pause the execution while a blocking software is launched
+        /// Check by using a manual reset event if the thread need to be paused
+        /// Gather the informations to give and laucnh the writing of logs in JSON and XML but alsoo for the states file
+        /// </summary>
+        /// <param name="blockIfRunning"></param>
+        /// <param name="post"></param>
+        /// <param name="state"></param>
+        /// <param name="ts"></param>
+        /// <param name="extensionToCrypt"></param>
+        /// <param name="manualResetEvent"></param>
+        /// <param name="priorityFile"></param>
+        public static void DoWork(string blockIfRunning, SaveWork post, string state, TimeSpan ts, string extensionToCrypt, int myIdint, ManualResetEvent manualResetEvent, string priorityFile)
         {
             if (post.id == myIdint)
             {
@@ -68,7 +78,7 @@ namespace GUIProject.core.Services.Strategies
                         string[] MyFiles = Directory.GetFiles(post.FileSource, "*.*", SearchOption.AllDirectories);
                         foreach (string file in MyFiles)
                         {
-                            if (file.Contains(".txt"))
+                            if (file.Contains(priorityFile))
                             {
                                 MyFiles = MyFiles.Where(o => o != file).ToArray();
                                 MyFiles = MyFiles.Prepend(file).ToArray();

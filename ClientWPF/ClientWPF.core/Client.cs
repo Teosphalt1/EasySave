@@ -23,9 +23,9 @@ namespace ClientWPF.core
 
         public void ConnectToServer()
         {
+            // Select the Ip and port used for the connection with the server
             try
             {
-                //needs to be the same ip and port as the server
                 socketForServer = new TcpClient(myIp.ToString(), port);
             }
             catch
@@ -33,9 +33,10 @@ namespace ClientWPF.core
 
             }
         }
-
+        
         public void serverData()
         {
+            // Methods needed to read and write in the networkStream
             networkStream = socketForServer.GetStream();
             streamReader = new StreamReader(networkStream);
             streamWriter = new StreamWriter(networkStream);

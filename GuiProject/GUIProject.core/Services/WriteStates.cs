@@ -1,18 +1,14 @@
 ﻿using GUIProject.core;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace GUIProject
 {
     public class WriteStates
     {
         /// <summary>
-        /// Theses lines allow us to write the states of the save work
+        /// Allows to write the states in JSON in real time using the parameters given by executing on or all the saveworks
+        /// Calculate the size left to save and return the percentage of execution
         /// </summary>
         /// <param name="Name"></param>
         /// <param name="newPath"></param>
